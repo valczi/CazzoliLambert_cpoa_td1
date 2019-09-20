@@ -23,12 +23,8 @@ public class Abonnement{
 			datefin.trim();
 			datefin=datefin.replace(a, b);
 			datedeb=datedeb.replace(a, b);
-
-			System.out.println(datedeb);
-			System.out.println(datefin);
 			LocalDate d1 = LocalDate.parse(datedeb);
 			LocalDate d2 = LocalDate.parse(datefin);
-
 			requete.setDate(3, Date.valueOf(d1));
 			requete.setDate(4, Date.valueOf(d2));
 			requete.executeUpdate();

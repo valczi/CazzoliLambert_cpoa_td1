@@ -1,5 +1,7 @@
 package test;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import objmetiers.Abonnement;
@@ -11,9 +13,9 @@ public class Menu {
 
 	public static void main(String[] args) {
 		Abonnement abo = new Abonnement();
-		Client cl=new Client();
-		Revue rev=new Revue();
-		Periodicite per=new Periodicite();
+		Client cl = new Client();
+		Revue rev = new Revue();
+		Periodicite per = new Periodicite();
 		int dedans = 1;
 		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
@@ -39,35 +41,38 @@ public class Menu {
 			}
 
 			System.out.println("Voulez vous continuer ?(0 non,1 oui)");
-			dedans = sc.nextInt();
-			
+			do {
+				dedans = sc.nextInt();
+			} while (dedans != 0 && dedans != 1);
+
 		}
-	
-		
+
 	}
 
 	public static void menuAbo(Abonnement m) {
-		@SuppressWarnings("resource")
-		Scanner sc = new Scanner(System.in);
 		int choix;
 		System.out.println("Que voulez vous faire ? (Ajouter 1,Modifier 2,Supprimer 3)");
-		choix = sc.nextInt();
+		choix = nbonly();
 		System.out.println("id de l'abonnement");
-		int idabo = sc.nextInt();
+		int idabo = nbonly();
 		System.out.println("id revue");
-		int idrev = sc.nextInt();
+		int idrev = nbonly();
+		String datedeb;
+		String datefin;
 		if (choix == 1) {
-			System.out.println("date debut");
-			String datedeb = sc.next();
-			System.out.println("date fin");
-			String datefin = sc.next();
+			do {
+				System.out.println("date debut (année/mois/jours)");
+				datedeb = dateonly();
+				System.out.println("date fin (année/mois/jours)");
+				datefin = dateonly();
+			} while (!compdate(datedeb, datefin));
 			m.AjoutAbo(idabo, idrev, datedeb, datefin);
 		} else if (choix == 2) {
 			System.out.println("Que voulez vous modifier(date debut 1,date fin 2)");
-			choix = sc.nextInt();
+			choix = nbonly();
 
 			System.out.println("Donnez la date :");
-			String date = sc.next();
+			String date = dateonly();
 			if (choix == 1) {
 				m.ModifAboDeb(idabo, idrev, date);
 			} else {
@@ -77,100 +82,113 @@ public class Menu {
 		} else if (choix == 3) {
 			m.SupprAbo(idabo, idrev);
 		}
-	
 
 	}
 
+	private static boolean compdate(String datedeb, String datefin) {
+		char a = '/';
+		char b = '-';
+		datedeb.trim();
+		datefin.trim();
+		datefin = datefin.replace(a, b);
+		datedeb = datedeb.replace(a, b);
+		LocalDate d1 = LocalDate.parse(datedeb);
+		LocalDate d2 = LocalDate.parse(datefin);
+		if (d2.isBefore(d1)) {
+			System.out.println("Mauvaises dates");
+			return false;
+		} else if (d1.getYear() > LocalDate.now().getYear()) {
+			System.out.println("Année de début impossible");
+			return false;
+		} else
+
+			return true;
+	}
+
 	public static void menuPer(Periodicite m) {
-		@SuppressWarnings("resource")
-		Scanner sc = new Scanner(System.in);
 		int choix;
 		System.out.println("Que voulez vous faire ? (Ajouter 1,Modifier 2,Supprimer 3)");
-		choix = sc.nextInt();
+		choix = nbonly();
 		System.out.println("id de la periode");
-		int id = sc.nextInt();
+		int id = nbonly();
 		if (choix == 1) {
 			System.out.println("Libelle");
-			String libelle = sc.next();
+			String libelle = textonly();
 			m.AjoutPer(id, libelle);
 		} else if (choix == 2) {
 			System.out.println("Donnez le nouveau libelle :");
-			String libelle = sc.next();
+			String libelle = textonly();
 			m.ModifPer(id, libelle);
 		} else if (choix == 3) {
 			m.SupprPer(id);
 		}
-		
 
 	}
 
 	public static void menuClient(Client m) {
-		@SuppressWarnings("resource")
-		Scanner sc = new Scanner(System.in);
 		int choix;
 		System.out.println("Que voulez vous faire ? (Ajouter 1,Modifier 2,Supprimer 3)");
-		choix = sc.nextInt();
+		choix = nbonly();
 		System.out.println("id du Client");
-		int id = sc.nextInt();
+		int id = nbonly();
 		if (choix == 1) {
 			System.out.println("Nom");
-			sc.nextLine();
-			String nom = sc.nextLine();
+			textonly();
+			String nom = textonly();
 			System.out.println("Prenom");
-			String prenom = sc.nextLine();
+			String prenom = textonly();
 			System.out.println("numero rue");
-			int norue = sc.nextInt();
+			int norue = nbonly();
 			System.out.println("voie");
-			sc.nextLine();
-			String voie = sc.nextLine();
+			textonly();
+			String voie = textonly();
 			System.out.println("code_postal");
-			int codep = sc.nextInt();
+			int codep = nbonly();
 			System.out.println("ville");
-			sc.nextLine();
-			String ville = sc.next();
+			textonly();
+			String ville = textonly();
 			System.out.println("pays");
-			sc.nextLine();
-			String pays = sc.nextLine();
+			textonly();
+			String pays = textonly();
 
 			m.AjoutCl(id, nom, prenom, norue, voie, codep, ville, pays);
 		} else if (choix == 2) {
 			System.out.println(
 					"Que voulez vous modifier(nom 1,prenom 2,numero rue 3,voie 4,code postal 5,ville 6,pays 7)");
-			choix = sc.nextInt();
+			choix = nbonly();
 			if (choix == 1) {
 				System.out.println("Donnez le nouveau nom :");
-				String nom = sc.next();
+				String nom = textonly();
 				m.ModifClNom(id, nom);
 			} else if (choix == 2) {
 				System.out.println("Donnez le nouveau prenom :");
-				String prenom = sc.next();
+				String prenom = textonly();
 				m.ModifClPrenom(id, prenom);
 			} else if (choix == 3) {
 				System.out.println("Donnez la nouvelle rue :");
-				int rue = sc.nextInt();
+				int rue = nbonly();
 				m.ModifClRue(id, rue);
 			} else if (choix == 4) {
 				System.out.println("Donnez la nouvelle voie :");
-				String voie = sc.next();
+				String voie = textonly();
 				m.ModifClVoie(id, voie);
 			} else if (choix == 5) {
 				System.out.println("Donnez le nouveau code postal :");
-				int codep = sc.nextInt();
+				int codep = nbonly();
 				m.ModifClCode(id, codep);
 			} else if (choix == 6) {
 				System.out.println("Donnez la nouvelle ville :");
-				String ville = sc.next();
+				String ville = textonly();
 				m.ModifClVille(id, ville);
 			} else if (choix == 7) {
 				System.out.println("Donnez le nouveau pays :");
-				String pays = sc.next();
+				String pays = textonly();
 				m.ModifClPays(id, pays);
 			}
 
 		} else if (choix == 3) {
 			m.SupprCl(id);
 		}
-		
 
 	}
 
@@ -179,36 +197,36 @@ public class Menu {
 		Scanner sc = new Scanner(System.in);
 		int choix;
 		System.out.println("Que voulez vous faire ? (Ajouter 1,Modifier 2,Supprimer 3)");
-		choix = sc.nextInt();
+		choix = nbonly();
 		System.out.println("id de la revue");
-		int id = sc.nextInt();
-		sc.nextLine();
+		int id = nbonly();
+		textonly();
 		if (choix == 1) {
 			System.out.println("titre");
-			String titre = sc.next();
-			sc.nextLine();
+			String titre = textonly();
+			textonly();
 			System.out.println("description	");
-			String desc = sc.nextLine();
+			String desc = textonly();
 			System.out.println("tarif");
 			double tarif = sc.nextDouble();
-			sc.nextLine();
+			textonly();
 			System.out.println("visuel");
-			String visuel = sc.next();
-			sc.nextLine();
+			String visuel = textonly();
+
 			System.out.println("id periode");
-			int idp = sc.nextInt();
+			int idp = nbonly();
 
 			m.AjoutRev(id, titre, desc, tarif, visuel, idp);
 		} else if (choix == 2) {
 			System.out.println("Que voulez vous modifier(titre 1,description 2,tarif 3,visuel 4,periode 5)");
-			choix = sc.nextInt();
+			choix = nbonly();
 			if (choix == 1) {
 				System.out.println("Donnez le nouveau titre :");
-				String titre = sc.next();
+				String titre = textonly();
 				m.ModifRevTitre(id, titre);
 			} else if (choix == 2) {
 				System.out.println("Donnez la nouvelle Description :");
-				String desc = sc.next();
+				String desc = textonly();
 				m.ModifRevDesc(id, desc);
 			} else if (choix == 3) {
 				System.out.println("Donnez le nouveau tarif :");
@@ -216,21 +234,83 @@ public class Menu {
 				m.ModifRevTarif(id, tarif);
 			} else if (choix == 4) {
 				System.out.println("Donnez le nouveau visuel :");
-				String visu = sc.next();
+				String visu = textonly();
 				m.ModifRevVisuel(id, visu);
 			} else if (choix == 5) {
 				System.out.println("Donnez la nouvelle periode :");
-				int idp = sc.nextInt();
+				int idp = nbonly();
 				m.ModifRevPerio(id, idp);
 			}
 
 		} else if (choix == 3) {
 			m.SupprRev(id);
 		}
-		
 
 	}
 
+	public static String textonly() {
+		@SuppressWarnings("resource")
+		Scanner sc = new Scanner(System.in);
+		String txt = new String();
+		do {
+			txt = sc.nextLine();
+			if (!txt.matches("[a-zA-z\\s]*"))
+				System.out.println("Uniquement du texte réessayer");
+		} while (!txt.matches("[a-zA-z\\s]*"));
+		return txt;
+
 	}
 
+	public static String dateonly() {
+		@SuppressWarnings("resource")
+		Scanner sc = new Scanner(System.in);
+		String txt = new String();
+		ArrayList<String> ex = new ArrayList<String>();
+		String Rendu = new String();
+		boolean sortie = false;
+		txt.matches(".*\\d.*");
+		char a = ' ';
+		char b = '/';
+		do {
+			txt = sc.nextLine();
+			Rendu = txt;
+			if (!txt.contains("/"))
+				System.out.println("Il n'y a pas de /");
+			else {
+				txt = txt.replace(b, a);
+				if (!txt.matches("[0-9 ]+"))
+					System.out.println("Uniquement des chiffres entre les /");
+				else {
+					for (String i : txt.split(" "))
+						ex.add(i);
+					if (ex.size() > 3)
+						System.out.println("Trop de paramètre");
+					else if (Integer.parseInt(ex.get(2)) > 31 || Integer.parseInt(ex.get(2)) < 0
+							|| Integer.parseInt(ex.get(1)) == 2 && Integer.parseInt(ex.get(2)) > 28)
+						System.out.println("jours incorrecte");
+					else if (Integer.parseInt(ex.get(1)) > 12 || Integer.parseInt(ex.get(2)) < 0)
+						System.out.println("Mois incorrecte");
+					else
+						sortie = true;
+				}
+			}
+			ex.clear();
+		} while (!sortie);
+		return Rendu;
 
+	}
+
+	public static int nbonly() {
+		@SuppressWarnings("resource")
+		Scanner sc = new Scanner(System.in);
+		String txt = new String();
+		do {
+			txt = sc.nextLine();
+			if (!txt.matches("[0-9]+"))
+				System.out.println("Uniquement des chiffres réessayer");
+		} while (!txt.matches("[0-9]+"));
+		return Integer.parseInt(txt);
+
+	}
+
+}
