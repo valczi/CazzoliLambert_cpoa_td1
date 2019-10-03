@@ -24,10 +24,26 @@ public class ClientM {
 		this.pays = pays;
 	}
 	
-	public int getId_client() {
+	public ClientM(String nom, String prenom,int id_client) {
+		super();
+		this.id_client = id_client;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.no_rue = null;
+		this.voie = null;
+		this.code_postal = null;
+		this.ville = null;
+		this.pays = null;
+	}
+	
+	public ClientM() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public int getId() {
 		return id_client;
 	}
-	public void setId_client(int id_client) {
+	public void setId(int id_client) {
 		this.id_client = id_client;
 	}
 	public String getNom() {

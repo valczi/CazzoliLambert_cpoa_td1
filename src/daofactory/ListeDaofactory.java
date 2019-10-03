@@ -1,6 +1,6 @@
 package daofactory;
 
-import daoobjects.*;
+
 import liste.*;
 
 public class ListeDaofactory extends Daofactory{
@@ -20,11 +20,6 @@ public class ListeDaofactory extends Daofactory{
 		return ListePeriodicite.getInstance();
 
 	}
-
-	public FactureDAO getFacture() {
-		return ListeFacture.getInstance();
-	}
-
 
 	public ListeRevue getRevue() {
 		return ListeRevue.getInstance();

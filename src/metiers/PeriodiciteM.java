@@ -11,10 +11,14 @@ public class PeriodiciteM {
 		this.libelle = libelle;
 	}
 	
-	public int getId_periodicite() {
+	public PeriodiciteM() {
+	}
+	
+	
+	public int getId() {
 		return id_periodicite;
 	}
-	public void setId_periodicite(int id_periodicite) {
+	public void setId(int id_periodicite) {
 		this.id_periodicite = id_periodicite;
 	}
 	public String getLibelle() {

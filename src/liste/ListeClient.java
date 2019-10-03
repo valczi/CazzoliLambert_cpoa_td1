@@ -3,14 +3,13 @@ package liste;
 import java.util.ArrayList;
 
 import daoobjects.ClientDAO;
-import objmetiers.Client;
-
+import metiers.*;
 
 public final class ListeClient implements ClientDAO {
 
 	private static ListeClient instance;
 
-	private ArrayList<Client> listeclient;
+	private ArrayList<ClientM> ListeClient;
 
 	public static ListeClient getInstance() {
 
@@ -23,67 +22,69 @@ public final class ListeClient implements ClientDAO {
 
 	private ListeClient() {
 
-		this.listeclient = new ArrayList<Client>();
-		this.listeclient.add(new Client("Lambert", "Ludovic", 0));
-		this.listeclient.add(new Client("Cazzoli", "Valentin", 1));
+		this.ListeClient = new ArrayList<ClientM>();
+		this.ListeClient.add(new ClientM("Lambert", "Ludovic", 0));
+		this.ListeClient.add(new ClientM("Cazzoli", "Valentin", 1));
 	}
 
-	public void ajout(Client client) {
+	public boolean ajout(ClientM ClientM) {
 
-		if (this.listeclient.size() == 0) {
-			client.setId_client(0);
+		if (this.ListeClient.size() == 0) {
+			ClientM.setId(0);
 		} else {
-			int id = this.listeclient.get(this.listeclient.size() - 1).getId_client() + 1;
-			client.setId_client(id);
+			int id = this.ListeClient.get(this.ListeClient.size() - 1).getId() + 1;
+			ClientM.setId(id);
 		}
 
-		this.listeclient.add(client);
+		boolean ok = this.ListeClient.add(ClientM);
+		return ok;
+
 	}
 
-	public void supprimer(Client client) {
+	public boolean supprimer(ClientM ClientM) {
+		ClientM a;
 
-		int idx = this.listeclient.indexOf(client);
+		int idx = this.ListeClient.indexOf(ClientM);
 		if (idx == -1) {
 			throw new IllegalArgumentException("Tentative de suppression d'un objet inexistant");
 		} else {
-			this.listeclient.remove(idx);
+			a = this.ListeClient.remove(idx);
 		}
+		return ClientM.equals(a);
 	}
 
-	public Client getById(int id) {
-		Client client = new Client();
-		boolean trouve=false;
-		int i=0;
-		while (trouve==false && i<this.listeclient.size()){
-			if (this.listeclient.get(i).getId_client() == id) {
-				client = this.listeclient.get(i);
-				trouve=true;
-				}
-			else
-				i++;			
+	public ClientM getById(int id) {
+		ClientM ClientM = new ClientM();
+		boolean trouve = false;
+		int i = 0;
+		while (trouve == false && i < this.ListeClient.size()) {
+			if (this.ListeClient.get(i).getId() == id) {
+				ClientM = this.ListeClient.get(i);
+				trouve = true;
+			} else
+				i++;
 		}
-		if(i>=this.listeclient.size()){
-			System.out.println("Aucun client avec cet id");
-			client=null;}
-		return client;
+		if (i >= this.ListeClient.size()) {
+			System.out.println("Aucun ClientM avec cet id");
+			ClientM = null;
+		}
+		return ClientM;
 	}
 
 	@Override
-	public void modifier(Client client) {
-		int idx = this.listeclient.indexOf(client);
+	public boolean modifier(ClientM ClientM) {
+		int idx = this.ListeClient.indexOf(ClientM);
 		if (idx == -1) {
 			throw new IllegalArgumentException("Tentative de modification d'un objet inexistant");
 		} else {
-			this.listeclient.set(idx, client);
+			this.ListeClient.set(idx, ClientM);
 		}
-
+		return true;
 	}
 
-	public ArrayList<Client> tout() {
-		return this.listeclient;
+	public ArrayList<ClientM> tout() {
+		return this.ListeClient;
 
 	}
-
-
 
 }

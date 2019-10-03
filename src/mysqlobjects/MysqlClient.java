@@ -9,12 +9,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import daofactory.Connexion;
-import objmetiers.*;
+import metiers.*;
 import daoobjects.*;
 
 public class MysqlClient implements ClientDAO {
 
-	Scanner sc = new Scanner(System.in);
 	private static MysqlClient instance;
 
 	public MysqlClient() {
@@ -29,109 +28,121 @@ public class MysqlClient implements ClientDAO {
 		return instance;
 	}
 
-	public void ajout(Client client) {
+	public boolean ajout(ClientM Client) {
 		try {
 			Connection laConnexion = Connexion.getInstance().getMaConnexion();
 			PreparedStatement requete = laConnexion.prepareStatement(
-					"INSERT INTO client(nom,prenom,no_rue,voie,code_postal,ville,pays,ca_cumule) VALUES(?,?,?,?,?,?,?,?)",
+					"INSERT INTO Client(nom,prenom,no_rue,voie,code_postal,ville,pays) VALUES(?,?,?,?,?,?,?)",
 					Statement.RETURN_GENERATED_KEYS);
-			requete.setString(1, client.getNom());
-			requete.setString(2, client.getPrenom());
-			requete.setString(3, client.getNo_rue());
-			requete.setString(4, client.getVoie());
-			requete.setString(5, client.getCode_postal());
-			requete.setString(6, client.getVille());
-			requete.setString(7, client.getPays());
+			requete.setString(1, Client.getNom());
+			requete.setString(2, Client.getPrenom());
+			requete.setString(3, Client.getNo_rue());
+			requete.setString(4, Client.getVoie());
+			requete.setString(5, Client.getCode_postal());
+			requete.setString(6, Client.getVille());
 			requete.executeUpdate();
 
 			ResultSet res = requete.getGeneratedKeys();
 			if (res.next()) {
-				client.setId_client(res.getInt(1));
+				Client.setId(res.getInt(1));
 			}
 			if (requete != null)
 				requete.close();
 			if (res != null) {
 				res.close();
 			}
+			return true;
 
 		} catch (SQLException sqle) {
 			System.out.println("Pb select" + sqle.getMessage());
+			return false;
 		}
 
 	}
 
-	public void supprimer(Client client) {
+	public boolean supprimer(ClientM Client) {
 
 		try {
 			Connection laConnexion = Connexion.getInstance().getMaConnexion();
 			Statement requete = laConnexion.createStatement();
-			requete.executeUpdate("DELETE FROM client WHERE id_client=" + client.getId_client());
+			requete.executeUpdate("DELETE FROM Client WHERE id_Client=" + Client.getId());
 			if (requete != null)
 				requete.close();
+			return true;
 
 		} catch (SQLException sqle) {
 			System.out.println("Pb select" + sqle.getMessage());
+			return false;
 		}
 
 	}
 
-	public void modifier(Client client) {
+	public boolean modifier(ClientM Client) {
 		try {
-
 			Connection laConnexion = Connexion.getInstance().getMaConnexion();
 			PreparedStatement requete = laConnexion
-					.prepareStatement("UPDATE client SET nom=?,prenom=? WHERE id_client=?");
-			requete.setString(1, client.getNom());
-			requete.setString(2, client.getPrenom());
-			requete.setInt(3, client.getId_client());
+					.prepareStatement("UPDATE Client SET nom=?,prenom=? WHERE id_Client=?");
+			requete.setString(1, Client.getNom());
+			requete.setString(2, Client.getPrenom());
+			requete.setString(3, Client.getNo_rue());
+			requete.setString(4, Client.getVoie());
+			requete.setString(5, Client.getCode_postal());
+			requete.setString(6, Client.getVille());
+			requete.setInt(3, Client.getId());
 			requete.executeUpdate();
-			System.out.println(client.getId_client());
-			System.out.println("Le client a été modifié.");
+			System.out.println(Client.getId());
+			System.out.println("Le Client a été modifié.");
 			if (requete != null)
 				requete.close();
+			return true;
 		} catch (SQLException sqle) {
 			System.out.println("Pb select" + sqle.getMessage());
+			return false;
 		}
 
 	}
 
 	@Override
-	public ArrayList<Client> tout() {
-		ArrayList<Client> listeclient = new ArrayList<>();
+	public ArrayList<ClientM> tout() {
+		ArrayList<ClientM> listeClient = new ArrayList<>();
 		try {
 			Connection laConnexion = Connexion.getInstance().getMaConnexion();
-			PreparedStatement requete = laConnexion.prepareStatement("SELECT id_client,nom,prenom FROM client");
+			PreparedStatement requete = laConnexion.prepareStatement("SELECT id_Client,nom,prenom FROM Client");
 			ResultSet res = requete.executeQuery();
 			while (res.next()) {
-
-				listeclient.add(new Client(res.getString("nom"), res.getString("prenom")));
+				listeClient.add(new ClientM(res.getString("nom"), res.getString("prenom"), res.getInt("id_Client")));
 			}
 			if (requete != null)
 				requete.close();
+			if (res != null)
+				res.close();
 		} catch (SQLException sqle) {
 			System.out.println("Pb select" + sqle.getMessage());
 
 		}
-		return listeclient;
+		return listeClient;
 	}
 
-	public Client getById(int id) {
-		Client client = new Client();
+	public ClientM getById(int id) {
+		ClientM Client = new ClientM();
 		try {
 			Connection laConnexion = Connexion.getInstance().getMaConnexion();
 			PreparedStatement requete = laConnexion
-					.prepareStatement("SELECT id_client,nom,prenom FROM client WHERE id_client=" + id);
+					.prepareStatement("SELECT id_Client,nom,prenom FROM Client WHERE id_Client=" + id);
 			ResultSet res = requete.executeQuery();
-			client = new Client(res.getString("nom"), res.getString("prenom"));
+			res.next();
+			Client = new ClientM(res.getString("nom"), res.getString("prenom"), res.getInt("id_Client"));
 			if (requete != null)
 				requete.close();
+			if (res != null)
+				res.close();
 		} catch (SQLException sqle) {
 			System.out.println("Pb select" + sqle.getMessage());
 
 		}
-		if (client.getNom() == null || client.getPrenom() == null)
-			client = null;
-		return client;
+		if (Client.getNom() == null || Client.getPrenom() == null)
+			Client = null;
+		return Client;
 
 	}
 

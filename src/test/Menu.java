@@ -4,18 +4,16 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import objmetiers.Abonnement;
-import objmetiers.Client;
-import objmetiers.Periodicite;
-import objmetiers.Revue;
-
+import metiers.*;
 public class Menu {
 
 	public static void main(String[] args) {
-		Abonnement abo = new Abonnement();
-		Client cl = new Client();
-		Revue rev = new Revue();
-		Periodicite per = new Periodicite();
+		
+	}
+		/*AbonnementM abo = new AbonnementM();
+		ClientM cl = new ClientM();
+		RevueM rev = new RevueM();
+		PeriodiciteM per = new PeriodiciteM();
 		int dedans = 1;
 		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
@@ -49,7 +47,7 @@ public class Menu {
 
 	}
 
-	public static void menuAbo(Abonnement m) {
+	public static void menuAbo(AbonnementM m) {
 		int choix;
 		System.out.println("Que voulez vous faire ? (Ajouter 1,Modifier 2,Supprimer 3)");
 		choix = nbonly();
@@ -105,7 +103,7 @@ public class Menu {
 			return true;
 	}
 
-	public static void menuPer(Periodicite m) {
+	public static void menuPer(PeriodiciteM m) {
 		int choix;
 		System.out.println("Que voulez vous faire ? (Ajouter 1,Modifier 2,Supprimer 3)");
 		choix = nbonly();
@@ -125,7 +123,7 @@ public class Menu {
 
 	}
 
-	public static void menuClient(Client m) {
+	public static void menuClient(ClientM m) {
 		int choix;
 		System.out.println("Que voulez vous faire ? (Ajouter 1,Modifier 2,Supprimer 3)");
 		choix = nbonly();
@@ -192,7 +190,7 @@ public class Menu {
 
 	}
 
-	public static void menuRevue(Revue m) {
+	public static void menuRevue(RevueM m) {
 		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		int choix;
@@ -246,7 +244,7 @@ public class Menu {
 			m.SupprRev(id);
 		}
 
-	}
+	}*/
 
 	public static String textonly() {
 		@SuppressWarnings("resource")

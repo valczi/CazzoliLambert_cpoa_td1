@@ -17,6 +17,10 @@ public class AbonnementM {
 		this.date_fin = date_fin;
 	}
 
+	public AbonnementM() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getId_client() {
 		return id_client;
 	}

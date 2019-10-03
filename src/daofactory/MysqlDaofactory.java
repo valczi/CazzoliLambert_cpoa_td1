@@ -1,6 +1,6 @@
 package daofactory;
 
-import mysqlobject.*;
+import mysqlobjects.*;
 
 
 public class MysqlDaofactory extends Daofactory{
