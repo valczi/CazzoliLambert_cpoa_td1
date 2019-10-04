@@ -49,7 +49,7 @@ public class ListeAbonnement implements AbonnementDAO {
 		boolean trouve = false;
 		int i = 0;
 		while (trouve == false && i < this.ListeAbo.size()) {
-			if (this.ListeAbo.get(i).getId_client() == id_cl && this.ListeAbo.get(i).getId_revue() == id_cl) {
+			if (this.ListeAbo.get(i).getId_client() == id_cl && this.ListeAbo.get(i).getId_revue() == id_revue) {
 				AbonnementM = this.ListeAbo.get(i);
 				trouve = true;
 			} else
