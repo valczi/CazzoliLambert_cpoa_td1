@@ -2,8 +2,6 @@ package liste;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Scanner;
-
 import daoobjects.AbonnementDAO;
 import metiers.AbonnementM;
 
@@ -78,38 +76,5 @@ public class ListeAbonnement implements AbonnementDAO {
 		return this.ListeAbo;
 	}
 
-	/*public AbonnementM getById(int id_clien) {
-		ArrayList<AbonnementM> listeAboTrouve = new ArrayList<AbonnementM>();
-		ArrayList<Integer> listeidabo = new ArrayList<Integer>();
-		AbonnementM abochoix=new AbonnementM();
-		int i = 0;
-		int taille=this.ListeAbo.size();
-		while (i <taille ) {
-			if (this.ListeAbo.get(i).getId_client() == id_clien) {
-				listeAboTrouve.add(this.ListeAbo.get(i));
-				listeidabo.add(this.ListeAbo.get(i).getId_revue());
-			}
-			i++;
-		}
-		if (i > this.ListeAbo.size()) {
-			System.out.println("Aucun Abonnement avec cet id");
-			abochoix = null;
-		}
-		if (this.ListeAbo.size()>0) {
-			System.out.println("Voici les abonnements de ce client :\n" + listeAboTrouve.toString()
-					+ "\n auquel voulez vous accéder ?");
-			@SuppressWarnings("resource")
-			Scanner sc=new Scanner(System.in);
-			int choix;
-			do {
-				choix=sc.nextInt();
-				if(!listeidabo.contains(choix))
-					System.out.println("Choisissez parmis les choix donnés s'il vous plaît");
-			}while(listeidabo.size()>choix || choix<=0);
-			
-			abochoix=listeAboTrouve.get(choix-1);
-		}
-		return abochoix;
-	}*/
 
 }
