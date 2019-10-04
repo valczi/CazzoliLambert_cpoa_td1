@@ -55,7 +55,7 @@ public class ListeAbonnement implements AbonnementDAO {
 			} else
 				i++;
 		}
-		if (i >= this.ListeAbo.size()) {
+		if (!trouve) {
 			System.out.println("Aucun AbonnementM avec cet id");
 			AbonnementM = null;
 		}
