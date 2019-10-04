@@ -10,7 +10,7 @@ public class PeriodiciteM {
 		this.id_periodicite = id_periodicite;
 		this.libelle = libelle;
 	}
-	
+	 
 	public PeriodiciteM() {
 	}
 	

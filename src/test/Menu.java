@@ -83,11 +83,12 @@ public class Menu {
 				if (!listeidcl.contains(idabo))
 					System.out.println("Cet id n'existe pas");
 			} while (!listeidcl.contains(idabo));
-			// On récupère tout les revues auxquels est abonné le client choisis pour
+			// On récupère toutes les revues auxquelles est abonné le client choisi pour
 			// vérifier ensuite le choix de la revue
 			for (AbonnementM abo : m.tout())
 				if (abo.getId_client() == idabo)
-					listeidrevcl.add(abo.getId_client());
+					listeidrevcl.add(abo.getId_revue());
+			System.out.println(listeidrevcl.toString());
 			do {
 				System.out.println("id revue");
 				idrev = nbonly();

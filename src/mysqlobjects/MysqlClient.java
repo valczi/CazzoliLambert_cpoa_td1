@@ -28,7 +28,7 @@ public class MysqlClient implements ClientDAO {
 	}
 
 	public boolean ajout(ClientM Client) {
-		try {
+		try { 
 			Connection laConnexion = Connexion.getInstance().getMaConnexion();
 			PreparedStatement requete = laConnexion.prepareStatement(
 					"INSERT INTO Client(nom,prenom,no_rue,voie,code_postal,ville,pays) VALUES(?,?,?,?,?,?,?)",

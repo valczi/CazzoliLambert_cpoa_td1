@@ -57,7 +57,7 @@ public class ClientM {
 	}
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
-	}
+	} 
 	public String getNo_rue() {
 		return no_rue;
 	}

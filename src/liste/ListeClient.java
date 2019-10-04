@@ -10,7 +10,7 @@ public final class ListeClient implements ClientDAO {
 	private static ListeClient instance;
 
 	private ArrayList<ClientM> ListeClient;
-
+ 
 	public static ListeClient getInstance() {
 
 		if (instance == null) {

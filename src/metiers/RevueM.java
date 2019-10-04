@@ -11,7 +11,7 @@ public class RevueM {
 
 	public int getId_revue() {
 		return id_revue;
-	}
+	} 
 
 	public RevueM(int id_revue, String titre, String description, double tarif_numero, String visuel,
 			int id_periodicite) {

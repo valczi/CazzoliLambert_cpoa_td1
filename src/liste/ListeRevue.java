@@ -11,7 +11,7 @@ public class ListeRevue implements RevueDAO{
 
 	private List<RevueM> donnees;
 
-
+ 
 	public static ListeRevue getInstance() {
 
 		if (instance == null) {
@@ -25,14 +25,14 @@ public class ListeRevue implements RevueDAO{
 
 		this.donnees = new ArrayList<RevueM>();
 
-		this.donnees.add(new RevueM(1,"Mega revue","Une revue énorme",2.0, "Megarevue.jpg",1));
+		this.donnees.add(new RevueM(1,"Mega revue","Une revue ï¿½norme",2.0, "Megarevue.jpg",1));
 		this.donnees.add(new RevueM(2,"Bof revue","Une revue pas ouf",2.0, "bof.jpg",2));
 	}
 
 
 	public boolean ajout(RevueM objet) {
 
-		// Ne fonctionne que si l'objet métier est bien fait...
+		// Ne fonctionne que si l'objet mï¿½tier est bien fait...
 		while (this.donnees.contains(objet)) {
 
 			objet.setId_revue(objet.getId_revue() + 1);
@@ -44,7 +44,7 @@ public class ListeRevue implements RevueDAO{
 
 	public boolean modifier(RevueM objet) {
 		
-		// Ne fonctionne que si l'objet métier est bien fait...
+		// Ne fonctionne que si l'objet mï¿½tier est bien fait...
 		int idx = this.donnees.indexOf(objet);
 		if (idx == -1) {
 			throw new IllegalArgumentException("Tentative de modification d'un objet inexistant");
@@ -61,7 +61,7 @@ public class ListeRevue implements RevueDAO{
 
 		RevueM supprime;
 		
-		// Ne fonctionne que si l'objet métier est bien fait...
+		// Ne fonctionne que si l'objet mï¿½tier est bien fait...
 		int idx = this.donnees.indexOf(objet);
 		if (idx == -1) {
 			throw new IllegalArgumentException("Tentative de suppression d'un objet inexistant");
@@ -85,7 +85,7 @@ public class ListeRevue implements RevueDAO{
 				i++;			
 		}
 		if(i>=this.donnees.size()){
-			System.out.println("Aucune périodicité avec avec cet id");
+			System.out.println("Aucune pï¿½riodicitï¿½ avec avec cet id");
 			client=null;}
 		return client;
 	}

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import daofactory.Connexion;
 import daoobjects.AbonnementDAO;
-import metiers.AbonnementM;
+import metiers.AbonnementM; 
 
 public class MysqlAbonnement implements AbonnementDAO {
 	private static MysqlAbonnement instance;

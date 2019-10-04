@@ -7,8 +7,8 @@ public class AbonnementM {
 	private int id_client;
 	private int id_revue;
 	private LocalDate date_debut;
-	private LocalDate date_fin;
-	
+	private LocalDate date_fin; 
+	 
 	public AbonnementM(int id_client, int id_revue, LocalDate date_debut, LocalDate date_fin) {
 		super();
 		this.id_client = id_client;

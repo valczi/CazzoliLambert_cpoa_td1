@@ -12,7 +12,7 @@ public class ListePeriodicite implements PeriodiciteDAO{
 
 		private List<PeriodiciteM> donnees;
 
-
+ 
 		public static ListePeriodicite getInstance() {
 
 			if (instance == null) {
@@ -35,7 +35,7 @@ public class ListePeriodicite implements PeriodiciteDAO{
 		public boolean ajout(PeriodiciteM objet) {
 
 			objet.setId(3);
-			// Ne fonctionne que si l'objet métier est bien fait...
+			// Ne fonctionne que si l'objet mï¿½tier est bien fait...
 			while (this.donnees.contains(objet)) {
 
 				objet.setId(objet.getId() + 1);
@@ -48,7 +48,7 @@ public class ListePeriodicite implements PeriodiciteDAO{
 		@Override
 		public boolean modifier(PeriodiciteM objet) {
 			
-			// Ne fonctionne que si l'objet métier est bien fait...
+			// Ne fonctionne que si l'objet mï¿½tier est bien fait...
 			int idx = this.donnees.indexOf(objet);
 			if (idx == -1) {
 				throw new IllegalArgumentException("Tentative de modification d'un objet inexistant");
@@ -65,7 +65,7 @@ public class ListePeriodicite implements PeriodiciteDAO{
 
 			PeriodiciteM supprime;
 			
-			// Ne fonctionne que si l'objet métier est bien fait...
+			// Ne fonctionne que si l'objet mï¿½tier est bien fait...
 			int idx = this.donnees.indexOf(objet);
 			if (idx == -1) {
 				throw new IllegalArgumentException("Tentative de suppression d'un objet inexistant");
@@ -89,7 +89,7 @@ public class ListePeriodicite implements PeriodiciteDAO{
 					i++;			
 			}
 			if(i>=this.donnees.size()){
-				System.out.println("Aucune périodicité avec avec cet id");
+				System.out.println("Aucune pï¿½riodicitï¿½ avec avec cet id");
 				client=null;}
 			return client;
 		}

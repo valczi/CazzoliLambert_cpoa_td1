@@ -25,7 +25,7 @@ public class MysqlRevue implements RevueDAO{
 			instance = new MysqlRevue();
 		}
 		return instance;
-	}
+	} 
 
 	public boolean ajout(RevueM Revue) {
 		try {

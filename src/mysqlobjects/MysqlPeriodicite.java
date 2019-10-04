@@ -24,7 +24,7 @@ public class MysqlPeriodicite implements PeriodiciteDAO{
 			instance = new MysqlPeriodicite();
 		}
 		return instance;
-	}
+	} 
 
 	public boolean ajout(PeriodiciteM Periodicite) {
 		try {
