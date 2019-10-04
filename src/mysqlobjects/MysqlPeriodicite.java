@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import daofactory.Connexion;
 import daoobjects.PeriodiciteDAO;
@@ -31,20 +30,13 @@ public class MysqlPeriodicite implements PeriodiciteDAO{
 		try {
 			Connection laConnexion = Connexion.getInstance().getMaConnexion();
 			PreparedStatement requete = laConnexion.prepareStatement(
-					"INSERT INTO Periodicite(id_periodicite,libelle) VALUES(?,?)",
+					"INSERT INTO Periodicite(libelle) VALUES(?,?)",
 					Statement.RETURN_GENERATED_KEYS);
-			requete.setInt(1, Periodicite.getId());
-			requete.setString(2, Periodicite.getLibelle());
+			requete.setString(1, Periodicite.getLibelle());
 			requete.executeUpdate();
-			ResultSet res = requete.getGeneratedKeys();
-			if (res.next()) {
-				Periodicite.setId(res.getInt(1));
-			}
+			
 			if (requete != null)
 				requete.close();
-			if (res != null) {
-				res.close();
-			}
 			return true;
 
 		} catch (SQLException sqle) {
@@ -80,7 +72,7 @@ public class MysqlPeriodicite implements PeriodiciteDAO{
 			requete.setInt(2, Periodicite.getId());
 			requete.executeUpdate();
 			//System.out.println(Periodicite.getId());
-			System.out.println("Le Periodicite a été modifié.");
+			System.out.println("Le Periodicite a ï¿½tï¿½ modifiï¿½.");
 			if (requete != null)
 				requete.close();
 			return true;

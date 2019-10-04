@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import daofactory.Connexion;
 import metiers.*;
@@ -40,12 +39,13 @@ public class MysqlClient implements ClientDAO {
 			requete.setString(4, Client.getVoie());
 			requete.setString(5, Client.getCode_postal());
 			requete.setString(6, Client.getVille());
+			requete.setString(7, Client.getPays());
 			requete.executeUpdate();
 
 			ResultSet res = requete.getGeneratedKeys();
-			if (res.next()) {
+		/*	if (res.next()) {
 				Client.setId(res.getInt(1));
-			}
+			}*/
 			if (requete != null)
 				requete.close();
 			if (res != null) {
@@ -65,7 +65,7 @@ public class MysqlClient implements ClientDAO {
 		try {
 			Connection laConnexion = Connexion.getInstance().getMaConnexion();
 			Statement requete = laConnexion.createStatement();
-			requete.executeUpdate("DELETE FROM Client WHERE id_Client=" + Client.getId());
+			requete.executeUpdate("DELETE FROM Client WHERE id_client=" + Client.getId());
 			if (requete != null)
 				requete.close();
 			return true;
@@ -81,17 +81,18 @@ public class MysqlClient implements ClientDAO {
 		try {
 			Connection laConnexion = Connexion.getInstance().getMaConnexion();
 			PreparedStatement requete = laConnexion
-					.prepareStatement("UPDATE Client SET nom=?,prenom=? WHERE id_Client=?");
+					.prepareStatement("UPDATE Client SET nom=?,prenom=?,no_rue=?,voie=?,code_postal=?,ville=?,pays=? WHERE id_client=?");
 			requete.setString(1, Client.getNom());
 			requete.setString(2, Client.getPrenom());
 			requete.setString(3, Client.getNo_rue());
 			requete.setString(4, Client.getVoie());
 			requete.setString(5, Client.getCode_postal());
 			requete.setString(6, Client.getVille());
-			requete.setInt(3, Client.getId());
+			requete.setString(7, Client.getPays());
+			requete.setInt(8, Client.getId());
 			requete.executeUpdate();
 			System.out.println(Client.getId());
-			System.out.println("Le Client a été modifié.");
+			System.out.println("Le Client a ete modifie.");
 			if (requete != null)
 				requete.close();
 			return true;
@@ -107,10 +108,10 @@ public class MysqlClient implements ClientDAO {
 		ArrayList<ClientM> listeClient = new ArrayList<>();
 		try {
 			Connection laConnexion = Connexion.getInstance().getMaConnexion();
-			PreparedStatement requete = laConnexion.prepareStatement("SELECT id_Client,nom,prenom FROM Client");
+			PreparedStatement requete = laConnexion.prepareStatement("SELECT id_client,nom,prenom,no_rue,voie,code_postal,ville,pays FROM Client");
 			ResultSet res = requete.executeQuery();
 			while (res.next()) {
-				listeClient.add(new ClientM(res.getString("nom"), res.getString("prenom"), res.getInt("id_Client")));
+				listeClient.add(new ClientM(res.getInt("id_client"),res.getString("nom"), res.getString("prenom"),res.getString("no_rue"),res.getString("voie"),res.getString("code_postal"),res.getString("ville"),res.getString("pays") ));
 			}
 			if (requete != null)
 				requete.close();
@@ -128,10 +129,10 @@ public class MysqlClient implements ClientDAO {
 		try {
 			Connection laConnexion = Connexion.getInstance().getMaConnexion();
 			PreparedStatement requete = laConnexion
-					.prepareStatement("SELECT id_Client,nom,prenom FROM Client WHERE id_Client=" + id);
+					.prepareStatement("SELECT nom,prenom,no_rue,voie,code_postal,ville,pays FROM Client WHERE id_client=" + id);
 			ResultSet res = requete.executeQuery();
 			res.next();
-			Client = new ClientM(res.getString("nom"), res.getString("prenom"), res.getInt("id_Client"));
+			Client=new ClientM(id,res.getString("nom"), res.getString("prenom"),res.getString("no_rue"),res.getString("voie"),res.getString("code_postal"),res.getString("ville"),res.getString("pays"));
 			if (requete != null)
 				requete.close();
 			if (res != null)

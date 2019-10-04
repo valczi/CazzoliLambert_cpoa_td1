@@ -31,25 +31,17 @@ public class MysqlRevue implements RevueDAO{
 		try {
 			Connection laConnexion = Connexion.getInstance().getMaConnexion();
 			PreparedStatement requete = laConnexion.prepareStatement(
-					"INSERT INTO Revue(id_revue,titre,description,tarif_numero,visuel,id_periodicite) VALUES(?,?,?,?,?,?)",
+					"INSERT INTO Revue(titre,description,tarif_numero,visuel,id_periodicite) VALUES(?,?,?,?,?)",
 					Statement.RETURN_GENERATED_KEYS);
-			requete.setInt(1, Revue.getId_revue());
-			requete.setString(2, Revue.getTitre());
-			requete.setString(3, Revue.getDescription());
-			requete.setDouble(4, Revue.getTarif_numero());
-			requete.setString(5, Revue.getVisuel());
-			requete.setInt(6, Revue.getId_periodicite());
+			requete.setString(1, Revue.getTitre());
+			requete.setString(2, Revue.getDescription());
+			requete.setDouble(3, Revue.getTarif_numero());
+			requete.setString(4, Revue.getVisuel());
+			requete.setInt(5, Revue.getId_periodicite());
 			requete.executeUpdate();
 
-			ResultSet res = requete.getGeneratedKeys();
-			if (res.next()) {
-				Revue.setId_revue(res.getInt(1));
-			}
 			if (requete != null)
 				requete.close();
-			if (res != null) {
-				res.close();
-			}
 			return true;
 
 		} catch (SQLException sqle) {
@@ -89,7 +81,7 @@ public class MysqlRevue implements RevueDAO{
 			requete.setInt(5, Revue.getId_periodicite());
 			requete.setInt(6, Revue.getId_revue());
 			requete.executeUpdate();
-			System.out.println("Le Revue a été modifié.");
+			System.out.println("Le Revue a ï¿½tï¿½ modifiï¿½.");
 			if (requete != null)
 				requete.close();
 			return true;

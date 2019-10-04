@@ -5,8 +5,6 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 import daofactory.Connexion;
@@ -79,7 +77,7 @@ public class MysqlAbonnement implements AbonnementDAO {
 			requete.setInt(4, Abonnement.getId_revue());
 			requete.executeUpdate();
 			// System.out.println(Abonnement.getId());
-			System.out.println("Le Abonnement a été modifié.");
+			System.out.println("Le Abonnement a ï¿½tï¿½ modifiï¿½.");
 			if (requete != null)
 				requete.close();
 			return true;
