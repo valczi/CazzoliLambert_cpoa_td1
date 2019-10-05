@@ -21,11 +21,13 @@ public class ClientM {
 		this.code_postal = code_postal;
 		this.ville = ville;
 		this.pays = pays;
+		this.id_client=-1;
 	}
 	
 	public ClientM(String nom, String prenom, String no_rue, String voie, String code_postal,
 			String ville, String pays) {
 		super();
+		this.id_client=-1;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.no_rue = no_rue;
@@ -55,6 +57,7 @@ public class ClientM {
 		this.code_postal = null;
 		this.ville = null;
 		this.pays = null;
+		this.id_client=-1;
 	}
 	
 	public ClientM() {
