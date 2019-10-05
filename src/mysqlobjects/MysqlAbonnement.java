@@ -129,7 +129,6 @@ public class MysqlAbonnement implements AbonnementDAO {
 				res.close();
 		} catch (SQLException sqle) {
 			System.out.println("Pb select" + sqle.getMessage());
-
 		}
 		return Abonnement;
 

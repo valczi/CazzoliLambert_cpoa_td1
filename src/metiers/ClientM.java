@@ -14,7 +14,18 @@ public class ClientM {
 	public ClientM(int id_client, String nom, String prenom, String no_rue, String voie, String code_postal,
 			String ville, String pays) {
 		super();
-		this.id_client = id_client;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.no_rue = no_rue;
+		this.voie = voie;
+		this.code_postal = code_postal;
+		this.ville = ville;
+		this.pays = pays;
+	}
+	
+	public ClientM(String nom, String prenom, String no_rue, String voie, String code_postal,
+			String ville, String pays) {
+		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.no_rue = no_rue;
@@ -27,6 +38,16 @@ public class ClientM {
 	public ClientM(String nom, String prenom,int id_client) {
 		super();
 		this.id_client = id_client;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.no_rue = null;
+		this.voie = null;
+		this.code_postal = null;
+		this.ville = null;
+		this.pays = null;
+	}
+	public ClientM(String nom, String prenom) {
+		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.no_rue = null;
@@ -96,6 +117,21 @@ public class ClientM {
 	}
 	
 	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((code_postal == null) ? 0 : code_postal.hashCode());
+		result = prime * result + id_client;
+		result = prime * result + ((no_rue == null) ? 0 : no_rue.hashCode());
+		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
+		result = prime * result + ((pays == null) ? 0 : pays.hashCode());
+		result = prime * result + ((prenom == null) ? 0 : prenom.hashCode());
+		result = prime * result + ((ville == null) ? 0 : ville.hashCode());
+		result = prime * result + ((voie == null) ? 0 : voie.hashCode());
+		return result;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

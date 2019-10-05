@@ -39,7 +39,10 @@ public class MysqlRevue implements RevueDAO{
 			requete.setString(4, Revue.getVisuel());
 			requete.setInt(5, Revue.getId_periodicite());
 			requete.executeUpdate();
-
+			ResultSet res = requete.getGeneratedKeys();
+			if (res.next()) {
+				Revue.setId_revue(res.getInt(1));
+			}
 			if (requete != null)
 				requete.close();
 			return true;

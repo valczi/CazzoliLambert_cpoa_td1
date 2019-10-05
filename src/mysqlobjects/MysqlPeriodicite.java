@@ -30,11 +30,14 @@ public class MysqlPeriodicite implements PeriodiciteDAO{
 		try {
 			Connection laConnexion = Connexion.getInstance().getMaConnexion();
 			PreparedStatement requete = laConnexion.prepareStatement(
-					"INSERT INTO Periodicite(libelle) VALUES(?,?)",
+					"INSERT INTO Periodicite(libelle) VALUES(?)",
 					Statement.RETURN_GENERATED_KEYS);
 			requete.setString(1, Periodicite.getLibelle());
 			requete.executeUpdate();
-			
+			ResultSet res = requete.getGeneratedKeys();
+			if (res.next()) {
+				Periodicite.setId(res.getInt(1));
+			}
 			if (requete != null)
 				requete.close();
 			return true;

@@ -43,9 +43,9 @@ public class MysqlClient implements ClientDAO {
 			requete.executeUpdate();
 
 			ResultSet res = requete.getGeneratedKeys();
-		/*	if (res.next()) {
+			if (res.next()) {
 				Client.setId(res.getInt(1));
-			}*/
+			}
 			if (requete != null)
 				requete.close();
 			if (res != null) {
