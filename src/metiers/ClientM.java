@@ -21,7 +21,7 @@ public class ClientM {
 		this.code_postal = code_postal;
 		this.ville = ville;
 		this.pays = pays;
-		this.id_client=-1;
+		this.id_client=id_client;
 	}
 	
 	public ClientM(String nom, String prenom, String no_rue, String voie, String code_postal,

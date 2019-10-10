@@ -75,7 +75,6 @@ public class MysqlPeriodicite implements PeriodiciteDAO{
 			requete.setInt(2, Periodicite.getId());
 			requete.executeUpdate();
 			//System.out.println(Periodicite.getId());
-			System.out.println("Le Periodicite a �t� modifi�.");
 			if (requete != null)
 				requete.close();
 			return true;
@@ -102,7 +101,7 @@ public class MysqlPeriodicite implements PeriodiciteDAO{
 				res.close();
 		} catch (SQLException sqle) {
 			System.out.println("Pb select" + sqle.getMessage());
-
+			listePeriodicite=null;
 		}
 		return listePeriodicite;
 	}
@@ -122,10 +121,8 @@ public class MysqlPeriodicite implements PeriodiciteDAO{
 				res.close();
 		} catch (SQLException sqle) {
 			System.out.println("Pb select" + sqle.getMessage());
-
+			Periodicite = null;
 		}
-	//	if (Periodicite.getLibelle() == null)
-		//	Periodicite = null;
 		return Periodicite;
 
 	}

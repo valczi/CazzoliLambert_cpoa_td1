@@ -24,6 +24,17 @@ public class RevueM {
 		this.id_periodicite = id_periodicite;
 
 	}
+	
+	public RevueM(String titre, String description, double tarif_numero, String visuel,
+			int id_periodicite) {
+		super();
+		this.id_revue = -1;
+		this.titre = titre;
+		this.description = description;
+		this.tarif_numero = tarif_numero;
+		this.visuel = visuel;
+		this.id_periodicite = id_periodicite;
+	}
 
 	public RevueM() {
 		// TODO Auto-generated constructor stub

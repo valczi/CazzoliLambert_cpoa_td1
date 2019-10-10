@@ -77,7 +77,6 @@ public class MysqlAbonnement implements AbonnementDAO {
 			requete.setInt(4, Abonnement.getId_revue());
 			requete.executeUpdate();
 			// System.out.println(Abonnement.getId());
-			System.out.println("Le Abonnement a �t� modifi�.");
 			if (requete != null)
 				requete.close();
 			return true;
@@ -106,7 +105,7 @@ public class MysqlAbonnement implements AbonnementDAO {
 				res.close();
 		} catch (SQLException sqle) {
 			System.out.println("Pb select" + sqle.getMessage());
-
+			listeAbonnement=null;
 		}
 		return listeAbonnement;
 	}
@@ -129,6 +128,7 @@ public class MysqlAbonnement implements AbonnementDAO {
 				res.close();
 		} catch (SQLException sqle) {
 			System.out.println("Pb select" + sqle.getMessage());
+			Abonnement = null;
 		}
 		return Abonnement;
 

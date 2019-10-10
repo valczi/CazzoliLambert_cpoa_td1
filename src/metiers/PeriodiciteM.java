@@ -10,6 +10,12 @@ public class PeriodiciteM {
 		this.id_periodicite = id_periodicite;
 		this.libelle = libelle;
 	}
+	
+	public PeriodiciteM(String libelle) {
+		super();
+		this.id_periodicite =-1;
+		this.libelle = libelle;
+	}
 	 
 	public PeriodiciteM() {
 	}

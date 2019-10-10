@@ -1,9 +1,11 @@
 package menu;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import daofactory.Connexion;
 import daofactory.Daofactory;
 import daofactory.Persistance;
 import daoobjects.AbonnementDAO;
@@ -59,6 +61,11 @@ public class Menu {
 
 		}
 		sc.close();
+		try {
+			Connexion.getInstance().getMaConnexion().close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void menuAbo(Daofactory a) {
@@ -83,8 +90,8 @@ public class Menu {
 				if (!listeidcl.contains(idabo))
 					System.out.println("Cet id n'existe pas");
 			} while (!listeidcl.contains(idabo));
-			// On récupère toutes les revues auxquelles est abonné le client choisi pour
-			// vérifier ensuite le choix de la revue
+			// On recupère toutes les revues auxquelles est abonne le client choisi pour
+			// verifier ensuite le choix de la revue
 			for (AbonnementM abo : m.tout())
 				if (abo.getId_client() == idabo)
 					listeidrevcl.add(abo.getId_revue());
@@ -93,7 +100,7 @@ public class Menu {
 				System.out.println("id revue");
 				idrev = nbonly();
 				if (!listeidrevcl.contains(idrev))
-					System.out.println("Ce client n'est pas abonné a cette revue");
+					System.out.println("Ce client n'est pas abonne a cette revue");
 			} while (!listeidrevcl.contains(idrev));
 			generic = m.getById(idabo, idrev);
 		}
@@ -121,7 +128,7 @@ public class Menu {
 			} while (!compdate(datedeb, datefin));
 
 			do {
-				System.out.println("numéro de la revue :");
+				System.out.println("numero de la revue :");
 				AfficheRev(r);
 				idrev = nbonly();
 				if (!listeidrevcl.contains(idrev))
@@ -175,7 +182,7 @@ public class Menu {
 		if (choix != 1) {
 			AffichePer(m);
 			do {
-				System.out.println("id de la période ? :");
+				System.out.println("id de la periode ? :");
 				id = nbonly();
 				if (!Listeid.contains(id))
 					System.out.println("Cette id n'existe pas");
@@ -238,7 +245,7 @@ public class Menu {
 			// textonly();
 			String pays = textonly();
 
-			m.ajout(new ClientM(0, nom, prenom, String.valueOf(norue), voie, String.valueOf(codep), ville, pays));
+			m.ajout(new ClientM(nom, prenom, String.valueOf(norue), voie, String.valueOf(codep), ville, pays));
 		} else if (choix == 2) {
 			System.out.println(
 					"Que voulez vous modifier(nom 1,prenom 2,numero rue 3,voie 4,code postal 5,ville 6,pays 7)");
@@ -375,7 +382,6 @@ public class Menu {
 				System.out.println("Uniquement du texte reessayer");
 		} while (!txt.matches("[a-zA-z\\s]*"));
 		return txt;
-
 	}
 
 	public static LocalDate dateonly() {
@@ -411,11 +417,9 @@ public class Menu {
 				if (!sortie)
 					ex.clear();
 			}
-
 		} while (!sortie);
 		// System.out.println(ex.toString());
 		return LocalDate.of(Integer.parseInt(ex.get(0)), Integer.parseInt(ex.get(1)), Integer.parseInt(ex.get(2)));
-
 	}
 
 	public static int nbonly() {
@@ -428,7 +432,6 @@ public class Menu {
 				System.out.println("Uniquement des chiffres reessayer");
 		} while (!txt.matches("[0-9]+"));
 		return Integer.parseInt(txt);
-
 	}
 
 	public static void AfficheAbo(AbonnementDAO a) {

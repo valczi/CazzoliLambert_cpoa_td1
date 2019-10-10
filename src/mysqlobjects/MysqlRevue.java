@@ -84,7 +84,6 @@ public class MysqlRevue implements RevueDAO{
 			requete.setInt(5, Revue.getId_periodicite());
 			requete.setInt(6, Revue.getId_revue());
 			requete.executeUpdate();
-			System.out.println("Le Revue a �t� modifi�.");
 			if (requete != null)
 				requete.close();
 			return true;
@@ -113,7 +112,7 @@ public class MysqlRevue implements RevueDAO{
 				res.close();
 		} catch (SQLException sqle) {
 			System.out.println("Pb select" + sqle.getMessage());
-
+			listeRevue=null;
 		}
 		return listeRevue;
 	}

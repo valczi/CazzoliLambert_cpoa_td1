@@ -16,6 +16,14 @@ public class AbonnementM {
 		this.date_debut = date_debut;
 		this.date_fin = date_fin;
 	}
+	
+	public AbonnementM(int id_client, int id_revue) {
+		super();
+		this.id_client = id_client;
+		this.id_revue = id_revue;
+		this.date_debut = LocalDate.of(1999,9,29);
+		this.date_fin = LocalDate.now();
+	}
 
 	public AbonnementM() {
 		// TODO Auto-generated constructor stub
