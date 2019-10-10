@@ -1,6 +1,6 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -9,13 +9,12 @@ import liste.ListeClient;
 import metiers.ClientM;
 
 public class ListeClientTest {
-
 	private static ClientM client;
 
 	@BeforeClass
 	public static void setUp() throws Exception {
 		client = new ClientM("test", "test2");
-		//ListeClient.getInstance().ajout(client);
+		ListeClient.getInstance().ajout(client);
 
 	}
 
@@ -28,7 +27,6 @@ public class ListeClientTest {
 	@Test
 	public void testGet() {
 		int id = client.getId();
-		System.out.println(client.toString());
 		ClientM cBdd = ListeClient.getInstance().getById(id);
 		assertNotNull(cBdd);
 	}
@@ -44,5 +42,4 @@ public class ListeClientTest {
 	public void testSupprimer() {
 		assertNotNull(ListeClient.getInstance().supprimer(client));
 	}
-
 }
