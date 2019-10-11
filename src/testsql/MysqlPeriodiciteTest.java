@@ -36,12 +36,12 @@ public class MysqlPeriodiciteTest {
 	public void testModifier() {
 		String libelle = "test1";
 		perio.setLibelle((libelle));
-		assertNotNull(MysqlPeriodicite.getInstance().modifier(perio));
+		assertTrue(MysqlPeriodicite.getInstance().modifier(perio));
 	}
 
 	@Test
 	public void testSupprimer(){
-		assertNotNull(MysqlPeriodicite.getInstance().supprimer(perio));
+		assertTrue(MysqlPeriodicite.getInstance().supprimer(perio));
 	}
 
 	@Test

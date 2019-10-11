@@ -33,12 +33,12 @@ public class ListeRevueTest {
 	public void testModifier() {
 		String description = "desciptert";
 		rev.setDescription(description);
-		assertNotNull(ListeRevue.getInstance().modifier(rev));
+		assertTrue(ListeRevue.getInstance().modifier(rev));
 	}
 
 	@Test
 	public void testSupprimer(){
-		assertNotNull(ListeRevue.getInstance().supprimer(rev));
+		assertTrue(ListeRevue.getInstance().supprimer(rev));
 	}
 
 	@Test

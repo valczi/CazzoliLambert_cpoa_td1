@@ -38,12 +38,12 @@ public class MysqlClientTest {
 	public void testModifier() {
 		String prenom = "test1";
 		client.setPrenom(prenom);
-		assertNotNull(MysqlClient.getInstance().modifier(client));
+		assertTrue(MysqlClient.getInstance().modifier(client));
 	}
 
 	@Test
 	public void testSupprimer(){
-		assertNotNull(MysqlClient.getInstance().supprimer(client));
+		assertTrue(MysqlClient.getInstance().supprimer(client));
 	}
 
 	@Test

@@ -32,12 +32,12 @@ public class ListeClientTest {
 	public void testModifier() {
 		String prenom = "test1";
 		client.setPrenom(prenom);
-		assertNotNull(ListeClient.getInstance().modifier(client));
+		assertTrue(ListeClient.getInstance().modifier(client));
 	}
 
 	@Test
 	public void testSupprimer(){
-		assertNotNull(ListeClient.getInstance().supprimer(client));
+		assertTrue(ListeClient.getInstance().supprimer(client));
 	}
 
 	@Test
