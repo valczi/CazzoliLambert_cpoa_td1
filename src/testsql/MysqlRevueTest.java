@@ -36,12 +36,12 @@ public class MysqlRevueTest {
 	public void testModifier() {
 		String description = "desciptert";
 		rev.setDescription(description);
-		assertTrue(MysqlRevue.getInstance().modifier(rev));
+		assertNotNull(MysqlRevue.getInstance().modifier(rev));
 	}
 
 	@Test
 	public void testSupprimer(){
-		assertTrue(MysqlRevue.getInstance().supprimer(rev));
+		assertNotNull(MysqlRevue.getInstance().supprimer(rev));
 	}
 
 	@Test

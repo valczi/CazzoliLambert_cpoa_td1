@@ -123,4 +123,10 @@ public class RevueM {
 		return true;
 	}
 
+	public String affichage() {
+		// TODO Auto-generated method stub
+		return "RevueM ("+titre + ", " + description + ", "
+				+ tarif_numero + "€, "+ id_periodicite + ")";
+	}
+
 }

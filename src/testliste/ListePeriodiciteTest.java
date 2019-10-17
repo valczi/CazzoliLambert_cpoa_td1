@@ -33,12 +33,12 @@ public class ListePeriodiciteTest {
 	public void testModifier() {
 		String libelle = "test1";
 		perio.setLibelle((libelle));
-		assertTrue(ListePeriodicite.getInstance().modifier(perio));
+		assertNotNull(ListePeriodicite.getInstance().modifier(perio));
 	}
 
 	@Test
 	public void testSupprimer(){
-		assertTrue(ListePeriodicite.getInstance().supprimer(perio));
+		assertNotNull(ListePeriodicite.getInstance().supprimer(perio));
 	}
 
 	@Test

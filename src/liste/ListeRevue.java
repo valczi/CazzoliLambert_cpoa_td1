@@ -23,7 +23,6 @@ public class ListeRevue implements RevueDAO {
 	private ListeRevue() {
 
 		this.donnees = new ArrayList<RevueM>();
-
 		this.donnees.add(new RevueM(1, "Mega revue", "Une revue enorme", 2.0, "Megarevue.jpg", 1));
 		this.donnees.add(new RevueM(2, "Bof revue", "Une revue pas ouf", 2.0, "bof.jpg", 2));
 	}

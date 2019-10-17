@@ -1,12 +1,9 @@
 package testsql;
 
 import static org.junit.Assert.*;
-
 import java.util.ArrayList;
-
 import org.junit.BeforeClass;
 import org.junit.Test;
-
 import mysqlobjects.MysqlClient;
 import metiers.ClientM;
 
@@ -38,12 +35,12 @@ public class MysqlClientTest {
 	public void testModifier() {
 		String prenom = "test1";
 		client.setPrenom(prenom);
-		assertTrue(MysqlClient.getInstance().modifier(client));
+		assertNotNull(MysqlClient.getInstance().modifier(client));
 	}
 
 	@Test
 	public void testSupprimer(){
-		assertTrue(MysqlClient.getInstance().supprimer(client));
+		assertNotNull(MysqlClient.getInstance().supprimer(client));
 	}
 
 	@Test

@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
 import daofactory.Connexion;
 import metiers.*;
 import daoobjects.*;

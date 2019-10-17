@@ -10,9 +10,7 @@ import java.util.Properties;
 public class Connexion {
 
 	private static Connexion connexion = null;
-
 	private Connection maConnexion;
-
 	private Connexion() {
 
 		Properties accesBdd1 = new Properties();
