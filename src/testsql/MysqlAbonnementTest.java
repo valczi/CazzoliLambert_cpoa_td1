@@ -23,8 +23,9 @@ public class MysqlAbonnementTest {
 
 	@Test
 	public void testAjout() {
-		assertTrue(MysqlAbonnement.getInstance().ajout(abo));
-		assertTrue(MysqlAbonnement.getInstance().supprimer(abo));
+		AbonnementM abom = new AbonnementM(5,6);
+		assertNotNull(MysqlAbonnement.getInstance().ajout(abom));
+		assertNotNull(MysqlAbonnement.getInstance().supprimer(abom));
 	}
 
 	@Test
@@ -38,12 +39,12 @@ public class MysqlAbonnementTest {
 	@Test
 	public void testModifier() {
 		abo.setDate_fin(LocalDate.of(2020,9,12));
-		assertTrue(MysqlAbonnement.getInstance().modifier(abo));
+		assertNotNull(MysqlAbonnement.getInstance().modifier(abo));
 	}
 
 	@Test
 	public void testSupprimer(){
-		assertTrue(MysqlAbonnement.getInstance().supprimer(abo));
+		assertNotNull(MysqlAbonnement.getInstance().supprimer(abo));
 	}
 
 	@Test

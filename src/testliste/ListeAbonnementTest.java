@@ -23,8 +23,9 @@ public class ListeAbonnementTest {
 
 	@Test
 	public void testAjout() {
-		assertTrue(ListeAbonnement.getInstance().ajout(abo));
-		assertTrue(ListeAbonnement.getInstance().supprimer(abo));
+		AbonnementM abom = new AbonnementM(5,6);
+		assertNotNull(ListeAbonnement.getInstance().ajout(abom));
+		assertNotNull(ListeAbonnement.getInstance().supprimer(abom));
 	}
 
 	@Test
@@ -38,12 +39,12 @@ public class ListeAbonnementTest {
 	@Test
 	public void testModifier() {
 		abo.setDate_fin(LocalDate.of(2020,9,12));
-		assertTrue(ListeAbonnement.getInstance().modifier(abo));
+		assertNotNull(ListeAbonnement.getInstance().modifier(abo));
 	}
 
 	@Test
 	public void testSupprimer(){
-		assertTrue(ListeAbonnement.getInstance().supprimer(abo));
+		assertNotNull(ListeAbonnement.getInstance().supprimer(abo));
 	}
 
 	@Test

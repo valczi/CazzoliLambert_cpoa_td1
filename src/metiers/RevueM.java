@@ -123,4 +123,9 @@ public class RevueM {
 		return true;
 	}
 
+	public String affichage() {
+		// TODO Auto-generated method stub
+		return titre +"("+tarif_numero +"€)";
+	}
+
 }
