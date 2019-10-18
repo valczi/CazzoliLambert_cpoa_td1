@@ -11,4 +11,4 @@ Comme indiqué dans le précédent README, chaque membre du groupe a pris part a
 
 ___
 
-Pour ce qui est du TD 4, on pourrait parler de 50/50. En effet, chacun a autant travaillé que l'autre durant ce TD. Ludovic a premièrement réalisé l'interface graphique. Valentin, quant à lui, a quand meme refait cette interface de son coté afin d'etre sur qu'il n'y ait pas d'erreur. Les deux membres du groupe ont ensuite travaillé ensemble sur le code.
+Pour ce qui est du TD 4, on pourrait parler de 50/50. En effet, chacun a autant travaillé que l'autre durant ce TD. Ludovic a premièrement réalisé l'interface graphique. Valentin, quant à lui, a quand meme refait cette interface de son coté afin d'etre sur qu'il n'y ait pas d'erreur. Les deux membres du groupe ont ensuite travaillé ensemble sur le code. 
