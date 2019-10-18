@@ -14,8 +14,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="controleur.RevueControleur">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.RevueControleur">
    <children>
       <Pane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -60,9 +59,9 @@
                   <TextField fx:id="edt_tarif" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="50.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                   <ComboBox fx:id="cbb_per" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <Label text="euros aux numéro" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                     <padding>
-                        <Insets right="20.0" />
-                     </padding>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
                   </Label>
                   <Label fx:id="lbl_alerte_titre" text="Titre invalide" textFill="RED" visible="false" GridPane.columnIndex="2">
                      <GridPane.margin>
@@ -113,7 +112,7 @@
                         <Insets right="20.0" />
                      </GridPane.margin>
                   </RadioButton>
-                  <RadioButton fx:id="rdb_sql" mnemonicParsing="false" onAction="#goSQL" selected="true" text="SQL" toggleGroup="$Persistance" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
+                  <RadioButton fx:id="rdb_sql" mnemonicParsing="false" onAction="#goSQL" text="SQL" toggleGroup="$Persistance" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
                      <GridPane.margin>
                         <Insets right="80.0" />
                      </GridPane.margin>

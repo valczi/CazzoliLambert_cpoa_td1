@@ -79,6 +79,7 @@ public class RevueControleur {
 		this.edt_tarif.clear();
 		this.edt_titre.clear();
 		perio = this.dao.getPeriodicite();
+		this.cbb_per.setItems(FXCollections.observableArrayList(perio.tout()));
 	}
 
 	@FXML
@@ -110,16 +111,16 @@ public class RevueControleur {
 	}
 
 	boolean textonly(String texte) {
-		texte = texte.replace("é", "e");
-		texte = texte.replace("ô", "o");
-		texte = texte.replace("ï", "i");
+		texte = texte.replace("ï¿½", "e");
+		texte = texte.replace("ï¿½", "o");
+		texte = texte.replace("ï¿½", "i");
 		if (!texte.matches("[a-zA-z\\s]*"))
 			return false;
 		else
 			return true;
 	}
 
-	// Renvois vrai si il y a un élément vide
+	// Renvois vrai si il y a un ï¿½lï¿½ment vide
 	boolean SomethingEmpty() {
 		return this.edt_desc.getText().isEmpty() || this.edt_tarif.getText().isEmpty()
 				|| this.edt_titre.getText().isEmpty();

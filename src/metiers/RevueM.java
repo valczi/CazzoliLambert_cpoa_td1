@@ -125,8 +125,7 @@ public class RevueM {
 
 	public String affichage() {
 		// TODO Auto-generated method stub
-		return "RevueM ("+titre + ", " + description + ", "
-				+ tarif_numero + "€, "+ id_periodicite + ")";
+		return titre +"("+tarif_numero +"â‚¬)";
 	}
 
 }
