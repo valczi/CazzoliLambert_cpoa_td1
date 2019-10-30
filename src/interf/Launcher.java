@@ -18,7 +18,7 @@ public class Launcher extends Application {
 				Parent root = fxmlLoader.load();
 				Scene scene = new Scene(root);
 				primaryStage.setScene(scene);
-				primaryStage.setTitle("Revue FX");
+				primaryStage.setTitle("Menu FX");
 				primaryStage.show();
 			} catch (Exception e) {
 				e.printStackTrace();

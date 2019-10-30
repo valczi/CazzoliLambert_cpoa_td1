@@ -33,7 +33,7 @@ public class MenuCont {
 			Parent root = fxmlLoader.load();
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();
-			stage.setTitle("New Window");
+			stage.setTitle("Abonnement");
 			stage.setScene(scene);
 			stage.show();
 		} catch (IOException e) {
@@ -49,7 +49,7 @@ public class MenuCont {
 			Parent root = fxmlLoader.load();
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();
-			stage.setTitle("New Window");
+			stage.setTitle("Client");
 			stage.setScene(scene);
 			stage.show();
 		} catch (IOException e) {
@@ -65,7 +65,7 @@ public class MenuCont {
 			Parent root = fxmlLoader.load();
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();
-			stage.setTitle("New Window");
+			stage.setTitle("Periodicite");
 			stage.setScene(scene);
 			stage.show();
 		} catch (IOException e) {

@@ -2,9 +2,7 @@ package liste;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import daoobjects.RevueDAO;
-import metiers.AbonnementM;
 import metiers.RevueM;
 
 public class ListeRevue implements RevueDAO {

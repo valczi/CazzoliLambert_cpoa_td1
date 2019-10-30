@@ -1,7 +1,6 @@
 package controleur;
 
 import daofactory.Daofactory;
-import daofactory.Persistance;
 import daoobjects.PeriodiciteDAO;
 import daoobjects.RevueDAO;
 import javafx.collections.FXCollections;
@@ -18,7 +17,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import metiers.PeriodiciteM;
-import metiers.RevueM;
 
 public class PerioControleur {
 
