@@ -22,8 +22,7 @@ public class ListeAbonnement implements AbonnementDAO {
 	private ListeAbonnement() {
 		this.ListeAbo = new ArrayList<AbonnementM>();
 		this.ListeAbo.add(new AbonnementM(1, 2, LocalDate.of(1999, 9, 29), LocalDate.of(2002, 5, 3)));
-		this.ListeAbo.add(new AbonnementM(1, 1, LocalDate.of(2002, 9, 29), LocalDate.of(2018, 1, 6)));
-		this.ListeAbo.add(new AbonnementM(3, 3, LocalDate.of(1995, 5, 21), LocalDate.of(2004, 2, 6)));
+		this.ListeAbo.add(new AbonnementM(2, 1, LocalDate.of(2002, 9, 29), LocalDate.of(2018, 1, 6)));
 	}
 
 	public boolean ajout(AbonnementM AbonnementM) {

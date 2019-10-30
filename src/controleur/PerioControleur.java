@@ -68,9 +68,6 @@ public class PerioControleur {
 
 	@FXML
 	private void initialize() {
-
-		this.lbl_alerte_titre.setVisible(false);
-		this.lbl_empty.setVisible(false);
 		this.dao = Daofactory.getDaofactory(daofactory.Persistance.Liste);
 		rev = this.dao.getRevue();
 		perio = this.dao.getPeriodicite();
@@ -79,9 +76,7 @@ public class PerioControleur {
 /////// Rechercher////////////
 		// 0. Initialize the columns.
 		// 1. Wrap the ObservableList in a FilteredList (initially display all data).
-		FilteredList<PeriodiciteM> filteredData = new FilteredList<>(FXCollections.observableArrayList(perio.tout()),
-				p -> true);
-
+		FilteredList<PeriodiciteM> filteredData = new FilteredList<>(FXCollections.observableArrayList(perio.tout()),p -> true);
 		// 2. Set the filter Predicate whenever the filter changes.
 		this.edt_RecLibelle.textProperty().addListener((observable, oldValue, newValue) -> {
 			filteredData.setPredicate(RevueM -> {

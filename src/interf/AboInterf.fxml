@@ -1,8 +1,145 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" styleClass="background" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.AboControleur">
+   <children>
+      <Pane layoutX="10.0" layoutY="310.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="400.0">
+         <children>
+            <GridPane prefHeight="54.0" prefWidth="600.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.0" minWidth="10.0" prefWidth="157.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="272.0" minWidth="10.0" prefWidth="272.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="157.0" minWidth="10.0" prefWidth="133.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="195.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Button fx:id="btn_creer" mnemonicParsing="false" onAction="#creationAbo" prefWidth="110.0" text="Creer" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <RadioButton fx:id="rdb_Liste" mnemonicParsing="false" onAction="#goListe" selected="true" styleClass="table-view" text="Liste" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="Persistance" />
+                     </toggleGroup>
+                     <GridPane.margin>
+                        <Insets right="20.0" />
+                     </GridPane.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="rdb_sql" mnemonicParsing="false" onAction="#goSQL" styleClass="table-view" text="SQL" toggleGroup="$Persistance" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
+                     <GridPane.margin>
+                        <Insets right="80.0" />
+                     </GridPane.margin>
+                  </RadioButton>
+                  <Button fx:id="btnMod2" mnemonicParsing="false" onAction="#modifRev" prefWidth="100.0" text="Modifier" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+               </children>
+            </GridPane>
+            <GridPane layoutX="415.0" layoutY="72.0" prefHeight="328.0" prefWidth="174.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Button fx:id="btnModif" mnemonicParsing="false" onAction="#modifRev" prefWidth="110.0" text="Modifier" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Button fx:id="btnSuppr" mnemonicParsing="false" onAction="#supprRev" prefWidth="110.0" text="Supprimer" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <CheckBox fx:id="checkEnCours" mnemonicParsing="false" onAction="#EnCours" styleClass="table-view" text="En cours" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+               </children>
+            </GridPane>
+            <TableView fx:id="tableAbo" layoutY="64.0" prefHeight="336.0" prefWidth="400.0">
+               <columns>
+                  <TableColumn fx:id="idclColumn" prefWidth="75.0" text="id client" />
+                  <TableColumn fx:id="idrevColumn" prefWidth="75.0" text="id revue" />
+                  <TableColumn fx:id="datedebColumn" prefWidth="125.0" text="date debut" />
+                  <TableColumn fx:id="datefinColumn" prefWidth="125.0" text="date fin" />
+               </columns>
+            </TableView>
+         </children>
+      </Pane>
+      <Pane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="400.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <GridPane layoutX="25.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="351.0" prefWidth="552.0" style="-fx-border-color: black; -fx-border-width: 2;">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <opaqueInsets>
+                  <Insets left="100.0" />
+               </opaqueInsets>
+               <children>
+                  <Label text="Client :" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets right="30.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label text="Revue :" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets right="30.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label text="Date debut :" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets right="30.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label text="Date fin :" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets right="30.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="lbl_alerte_cl" text="Client invalide" textFill="RED" visible="false" GridPane.columnIndex="2">
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="lbl_alerte_Rev" text="Revue invalide" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="lbl_alerte_DateD" text="Date invalide" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="lbl_alerte_DateF" text="Date invalide" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <DatePicker fx:id="dtDateDeb" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                  <DatePicker fx:id="dtDateFin" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                  <ComboBox fx:id="cbbClient" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" />
+                  <ComboBox fx:id="cbbRevue" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+            <Label fx:id="lbl_empty" alignment="CENTER" contentDisplay="CENTER" layoutY="5.0" text="des champs sont vides" visible="false" />
+         </children>
+      </Pane>
+   </children>
 </AnchorPane>
-

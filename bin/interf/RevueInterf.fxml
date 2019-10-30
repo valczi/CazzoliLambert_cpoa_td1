@@ -16,9 +16,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.RevueControleur">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" styleClass="background" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.RevueControleur">
    <children>
-      <Pane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="400.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <GridPane layoutX="25.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="351.0" prefWidth="552.0" style="-fx-border-color: black; -fx-border-width: 2;">
               <columnConstraints>
@@ -59,7 +59,7 @@
                   <TextField fx:id="edt_titre" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="160.0" GridPane.columnIndex="1" />
                   <TextArea fx:id="edt_desc" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <TextField fx:id="edt_tarif" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="50.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                  <ComboBox fx:id="cbb_per" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <ComboBox fx:id="cbb_per" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <Label text="euros aux numéro" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets />
@@ -87,7 +87,7 @@
                   </Label>
                </children>
             </GridPane>
-            <Label fx:id="lbl_empty" alignment="CENTER" layoutX="250.0" layoutY="5.0" text="des champs sont vides" visible="false" />
+            <Label fx:id="lbl_empty" alignment="CENTER" contentDisplay="CENTER" layoutY="5.0" text="des champs sont vides" visible="false" />
          </children>
       </Pane>
       <Pane layoutY="300.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="400.0">
@@ -102,8 +102,8 @@
                 <RowConstraints maxHeight="195.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="btn_creer" mnemonicParsing="false" onAction="#creationRev" prefWidth="100.0" text="Creer" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                  <RadioButton fx:id="rdb_Liste" mnemonicParsing="false" onAction="#goListe" selected="true" text="Liste" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
+                  <Button fx:id="btn_creer" mnemonicParsing="false" onAction="#creationRev" prefWidth="110.0" text="Creer" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <RadioButton fx:id="rdb_Liste" mnemonicParsing="false" onAction="#goListe" selected="true" styleClass="table-view" text="Liste" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
                      <toggleGroup>
                         <ToggleGroup fx:id="Persistance" />
                      </toggleGroup>
@@ -111,7 +111,7 @@
                         <Insets right="20.0" />
                      </GridPane.margin>
                   </RadioButton>
-                  <RadioButton fx:id="rdb_sql" mnemonicParsing="false" onAction="#goSQL" text="SQL" toggleGroup="$Persistance" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
+                  <RadioButton fx:id="rdb_sql" mnemonicParsing="false" onAction="#goSQL" styleClass="table-view" text="SQL" toggleGroup="$Persistance" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
                      <GridPane.margin>
                         <Insets right="80.0" />
                      </GridPane.margin>
@@ -131,21 +131,21 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="btnModif" mnemonicParsing="false" onAction="#modifRev" prefWidth="100.0" text="Modifier" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                  <Button fx:id="btnSuppr" mnemonicParsing="false" onAction="#supprRev" prefWidth="100.0" text="Supprimer" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <Button fx:id="btnModif" mnemonicParsing="false" onAction="#modifRev" prefWidth="110.0" text="Modifier" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Button fx:id="btnSuppr" mnemonicParsing="false" onAction="#supprRev" prefWidth="110.0" text="Supprimer" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                   <TextField fx:id="edt_RecTitre" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                   <TextField fx:id="edt_RecTarif" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-                  <Button fx:id="btnRec" mnemonicParsing="false" onAction="#Rechercher" prefWidth="100.0" text="Rechercher" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                  <Button fx:id="btnRec" mnemonicParsing="false" onAction="#Rechercher" prefWidth="110.0" text="Rechercher" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
                   <Label text="Titre :" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP" />
                   <Label text="Tarif :" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP" />
                </children>
             </GridPane>
             <TableView fx:id="tableRev" layoutY="64.0" prefHeight="336.0" prefWidth="430.0">
               <columns>
-                <TableColumn fx:id="titreColumn" prefWidth="120.0" text="Titre" />
-                <TableColumn fx:id="DescColumn" prefWidth="200.0" text="Description" />
+                <TableColumn fx:id="titreColumn" prefWidth="103.0" text="Titre" />
+                <TableColumn fx:id="DescColumn" prefWidth="217.0" text="Description" />
                   <TableColumn fx:id="tarifColumn" prefWidth="60.0" text="Tarif" />
-                  <TableColumn fx:id="idpColumn" prefWidth="50.0" text="idPerio" />
+                  <TableColumn fx:id="idpColumn" prefWidth="50.0" text="idP" />
               </columns>
             </TableView>
          </children>

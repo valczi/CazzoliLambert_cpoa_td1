@@ -63,7 +63,7 @@ public class AbonnementM {
 
 	@Override
 	public String toString() {
-		return "AbonnementM [id_client=" + id_client + ", id_revue=" + id_revue + ", date_debut=" + date_debut
+		return "AbonnementM [id_client=" + id_client + ", id_revue=" + id_revue + " date_debut=" + date_debut
 				+ ", date_fin=" + date_fin + "]";
 	}
 

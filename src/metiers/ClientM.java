@@ -115,8 +115,8 @@ public class ClientM {
 	
 	@Override
 	public String toString() {
-		return "ClientM [id_client=" + id_client + ", nom=" + nom + ", prenom=" + prenom + ", no_rue=" + no_rue
-				+ ", voie=" + voie + ", code_postal=" + code_postal + ", ville=" + ville + ", pays=" + pays + "]";
+		return "id_client=" + id_client + "\n nom=" + nom + "\n prenom=" + prenom + "\n no_rue=" + no_rue
+				+ "\n voie=" + voie + "\n code_postal=" + code_postal + "\n ville=" + ville + "\n pays=" + pays;
 	}
 	
 	

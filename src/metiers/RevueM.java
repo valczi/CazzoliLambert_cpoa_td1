@@ -99,8 +99,8 @@ public class RevueM {
 
 	@Override
 	public String toString() {
-		return "RevueM [id_revue=" + id_revue + ", titre=" + titre + ", description=" + description + ", tarif_numero="
-				+ tarif_numero + ", visuel=" + visuel + ", id_periodicite=" + id_periodicite + "]";
+		return "id_revue=" + id_revue + "\n titre=" + titre + "\n description=" + description + "\n tarif_numero="
+				+ tarif_numero + "\n visuel=" + visuel + "\n id_periodicite=" + id_periodicite;
 	}
 
 	@Override

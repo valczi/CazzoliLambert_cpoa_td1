@@ -302,10 +302,9 @@ public class RevueControleur {
 			String titre = null;
 			Double tarif = null;
 			if (!this.edt_RecTitre.getText().isEmpty())
-				titre = this.edt_RecTitre.getText();
+				titre = this.edt_RecTitre.getText().trim();
 			if (!this.edt_RecTarif.getText().isEmpty())
-				tarif = Double.valueOf(this.edt_RecTarif.getText());
-
+				tarif = Double.valueOf(this.edt_RecTarif.getText().trim());
 			for (RevueM a : rev.tout())
 
 				if (tarif != null) {

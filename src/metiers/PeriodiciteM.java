@@ -35,7 +35,7 @@ public class PeriodiciteM {
 	}
 	@Override
 	public String toString() {
-		return "PeriodiciteM [id_periodicite=" + id_periodicite + ", libelle=" + libelle + "]";
+		return "id_periodicite=" + id_periodicite + "\n libelle=" + libelle;
 	}
 	
 	
