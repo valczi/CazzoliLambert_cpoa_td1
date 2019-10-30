@@ -1,8 +1,6 @@
-/menu/
-/testliste/
-/testsql/
-/daofactory/
-/liste/
+/controleur/
+/interf/
 /metiers/
+/liste/
 /mysqlobjects/
-/test/
+/daoobjects/

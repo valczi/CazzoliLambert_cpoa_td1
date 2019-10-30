@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import daoobjects.RevueDAO;
+import metiers.AbonnementM;
 import metiers.RevueM;
 
 public class ListeRevue implements RevueDAO {
@@ -42,6 +43,7 @@ public class ListeRevue implements RevueDAO {
 
 		// Ne fonctionne que si l'objet metier est bien fait...
 		int idx = this.donnees.indexOf(objet);
+		
 		if (idx == -1) {
 			throw new IllegalArgumentException("Tentative de modification d'un objet inexistant");
 		} else {
@@ -89,5 +91,13 @@ public class ListeRevue implements RevueDAO {
 	@Override
 	public ArrayList<RevueM> tout() {
 		return (ArrayList<RevueM>) this.donnees;
+	}
+	
+	public boolean perioExist(int idp) {
+		boolean resultat=false;
+		for(RevueM a:this.donnees)
+			if(a.getId_periodicite()==idp)
+				resultat=true;
+		return resultat;
 	}
 }

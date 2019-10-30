@@ -140,4 +140,25 @@ public class MysqlRevue implements RevueDAO{
 		return Revue;
 
 	}
+	
+	public boolean perioExist(int idp) {
+		boolean resultat;
+		try {
+			Connection laConnexion = Connexion.getInstance().getMaConnexion();
+			PreparedStatement requete = laConnexion.prepareStatement("SELECT * FROM Revue WHERE id_periodicite=?");
+			requete.setInt(1, idp);
+			ResultSet res = requete.executeQuery();
+			
+			if (res.next())
+				resultat= true;
+			else
+				resultat= false;
+			if (res != null)
+				res.close();
+		} catch (SQLException sqle) {
+			resultat= false;
+		}
+		return resultat;
+
+	}
 }

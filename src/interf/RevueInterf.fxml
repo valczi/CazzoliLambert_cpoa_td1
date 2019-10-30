@@ -5,6 +5,8 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
@@ -14,7 +16,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.RevueControleur">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.RevueControleur">
    <children>
       <Pane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -90,20 +92,17 @@
       </Pane>
       <Pane layoutY="300.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="400.0">
          <children>
-            <GridPane prefHeight="100.0" prefWidth="600.0">
+            <GridPane prefHeight="54.0" prefWidth="600.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.0" minWidth="10.0" prefWidth="157.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="272.0" minWidth="10.0" prefWidth="272.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="157.0" minWidth="10.0" prefWidth="133.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="195.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label fx:id="lbl_creation" alignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                  <Button fx:id="btn_creer" mnemonicParsing="false" onAction="#creationRev" text="Creer" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Button fx:id="btn_creer" mnemonicParsing="false" onAction="#creationRev" prefWidth="100.0" text="Creer" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                   <RadioButton fx:id="rdb_Liste" mnemonicParsing="false" onAction="#goListe" selected="true" text="Liste" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
                      <toggleGroup>
                         <ToggleGroup fx:id="Persistance" />
@@ -117,8 +116,38 @@
                         <Insets right="80.0" />
                      </GridPane.margin>
                   </RadioButton>
+                  <Button fx:id="btnMod2" mnemonicParsing="false" onAction="#modifRev" prefWidth="100.0" text="Modifier" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                </children>
             </GridPane>
+            <GridPane layoutX="432.0" layoutY="72.0" prefHeight="328.0" prefWidth="168.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="btnModif" mnemonicParsing="false" onAction="#modifRev" prefWidth="100.0" text="Modifier" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Button fx:id="btnSuppr" mnemonicParsing="false" onAction="#supprRev" prefWidth="100.0" text="Supprimer" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <TextField fx:id="edt_RecTitre" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                  <TextField fx:id="edt_RecTarif" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                  <Button fx:id="btnRec" mnemonicParsing="false" onAction="#Rechercher" prefWidth="100.0" text="Rechercher" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                  <Label text="Titre :" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                  <Label text="Tarif :" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+               </children>
+            </GridPane>
+            <TableView fx:id="tableRev" layoutY="64.0" prefHeight="336.0" prefWidth="430.0">
+              <columns>
+                <TableColumn fx:id="titreColumn" prefWidth="120.0" text="Titre" />
+                <TableColumn fx:id="DescColumn" prefWidth="200.0" text="Description" />
+                  <TableColumn fx:id="tarifColumn" prefWidth="60.0" text="Tarif" />
+                  <TableColumn fx:id="idpColumn" prefWidth="50.0" text="idPerio" />
+              </columns>
+            </TableView>
          </children>
       </Pane>
    </children>

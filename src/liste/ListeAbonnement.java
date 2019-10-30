@@ -75,6 +75,14 @@ public class ListeAbonnement implements AbonnementDAO {
 	public ArrayList<AbonnementM> tout() {
 		return this.ListeAbo;
 	}
+	
+	public boolean RevExist(int idRev) {
+		boolean resultat=false;
+		for(AbonnementM a:this.ListeAbo)
+			if(a.getId_revue()==idRev)
+				resultat=true;
+		return resultat;
+	}
 
 
 }

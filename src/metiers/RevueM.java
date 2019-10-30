@@ -25,6 +25,18 @@ public class RevueM {
 
 	}
 	
+	public RevueM( String titre, String description, double tarif_numero,
+			int id_periodicite) {
+		super();
+		this.id_revue = -1;
+		this.titre = titre;
+		this.description = description;
+		this.tarif_numero = tarif_numero;
+		this.visuel = titre+".jpg";
+		this.id_periodicite = id_periodicite;
+
+	}
+	
 	public RevueM(String titre, String description, double tarif_numero, String visuel,
 			int id_periodicite) {
 		super();
@@ -50,6 +62,7 @@ public class RevueM {
 
 	public void setTitre(String titre) {
 		this.titre = titre;
+		this.visuel=titre+".jpg";
 	}
 
 	public String getDescription() {
@@ -88,6 +101,21 @@ public class RevueM {
 	public String toString() {
 		return "RevueM [id_revue=" + id_revue + ", titre=" + titre + ", description=" + description + ", tarif_numero="
 				+ tarif_numero + ", visuel=" + visuel + ", id_periodicite=" + id_periodicite + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + id_periodicite;
+		result = prime * result + id_revue;
+		long temp;
+		temp = Double.doubleToLongBits(tarif_numero);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((titre == null) ? 0 : titre.hashCode());
+		result = prime * result + ((visuel == null) ? 0 : visuel.hashCode());
+		return result;
 	}
 
 	@Override

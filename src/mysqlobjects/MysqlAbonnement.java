@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import daofactory.Connexion;
 import daoobjects.AbonnementDAO;
-import metiers.AbonnementM; 
+import metiers.AbonnementM;
 
 public class MysqlAbonnement implements AbonnementDAO {
 	private static MysqlAbonnement instance;
@@ -51,7 +51,8 @@ public class MysqlAbonnement implements AbonnementDAO {
 
 		try {
 			Connection laConnexion = Connexion.getInstance().getMaConnexion();
-			PreparedStatement requete = laConnexion.prepareStatement("DELETE FROM Abonnement WHERE id_client=? AND id_revue=?");
+			PreparedStatement requete = laConnexion
+					.prepareStatement("DELETE FROM Abonnement WHERE id_client=? AND id_revue=?");
 			requete.setInt(1, Abonnement.getId_client());
 			requete.setInt(2, Abonnement.getId_revue());
 			requete.executeUpdate();
@@ -105,7 +106,7 @@ public class MysqlAbonnement implements AbonnementDAO {
 				res.close();
 		} catch (SQLException sqle) {
 			System.out.println("Pb select" + sqle.getMessage());
-			listeAbonnement=null;
+			listeAbonnement = null;
 		}
 		return listeAbonnement;
 	}
@@ -116,12 +117,12 @@ public class MysqlAbonnement implements AbonnementDAO {
 			Connection laConnexion = Connexion.getInstance().getMaConnexion();
 			PreparedStatement requete = laConnexion
 					.prepareStatement("SELECT date_debut,date_fin FROM Abonnement WHERE id_client=? AND id_revue=?");
-			requete.setInt(1,id);
-			requete.setInt(2,id2);
+			requete.setInt(1, id);
+			requete.setInt(2, id2);
 			ResultSet res = requete.executeQuery();
 			res.next();
-			Abonnement =new AbonnementM(id,id2,
-					res.getDate("date_debut").toLocalDate(), res.getDate("date_fin").toLocalDate());
+			Abonnement = new AbonnementM(id, id2, res.getDate("date_debut").toLocalDate(),
+					res.getDate("date_fin").toLocalDate());
 			if (requete != null)
 				requete.close();
 			if (res != null)
@@ -131,6 +132,27 @@ public class MysqlAbonnement implements AbonnementDAO {
 			Abonnement = null;
 		}
 		return Abonnement;
+
+	}
+
+	public boolean RevExist(int idRev) {
+		boolean resultat;
+		try {
+			Connection laConnexion = Connexion.getInstance().getMaConnexion();
+			PreparedStatement requete = laConnexion.prepareStatement("SELECT * FROM Abonnement WHERE id_revue=?");
+			requete.setInt(1, idRev);
+			ResultSet res = requete.executeQuery();
+			
+			if (res.next())
+				resultat= true;
+			else
+				resultat= false;
+			if (res != null)
+				res.close();
+		} catch (SQLException sqle) {
+			resultat= false;
+		}
+		return resultat;
 
 	}
 

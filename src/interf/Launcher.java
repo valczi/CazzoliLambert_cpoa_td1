@@ -13,7 +13,7 @@ public class Launcher extends Application {
 		@Override
 		public void start(Stage primaryStage) {
 			try {
-				URL fxmlURL = getClass().getResource("RevueInterf.fxml");
+				URL fxmlURL = getClass().getResource("PerioInterf.fxml");
 				FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
 				Parent root = fxmlLoader.load();
 				Scene scene = new Scene(root);
