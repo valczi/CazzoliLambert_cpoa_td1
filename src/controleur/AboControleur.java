@@ -143,10 +143,16 @@ public class AboControleur {
 	@FXML
 	void creationAbo(ActionEvent event) {
 		if (ChampCorrecte()) {
-			this.abo.ajout(new AbonnementM(this.cbbClient.getSelectionModel().getSelectedItem().getId(),
+			AbonnementM a = new AbonnementM(this.cbbClient.getSelectionModel().getSelectedItem().getId(),
 					this.cbbRevue.getSelectionModel().getSelectedItem().getId_revue(), this.dtDateDeb.getValue(),
-					this.dtDateFin.getValue()));
-			clear();
+					this.dtDateFin.getValue());
+			if (this.abo.getById(a.getId_client(), a.getId_revue()) != null) {
+				this.lbl_empty.setText("Abonnement Déjà existant");
+				this.lbl_empty.setVisible(true);
+			} else {
+				this.abo.ajout(a);
+				clear();
+			}
 		}
 
 	}

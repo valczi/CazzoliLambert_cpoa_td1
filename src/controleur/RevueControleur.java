@@ -114,7 +114,9 @@ public class RevueControleur {
 
 	@FXML
 	void clear() {
-
+		this.btnMod2.setVisible(false);
+		this.btnModif.setVisible(true);
+		this.btn_creer.setVisible(true);
 		this.lbl_empty.setVisible(false);
 		this.lbl_alerte_desc.setVisible(false);
 		this.lbl_alerte_perio.setVisible(false);
@@ -245,6 +247,7 @@ public class RevueControleur {
 				this.actif = true;
 				btnMod2.setVisible(true);
 				btnModif.setVisible(false);
+				this.btn_creer.setVisible(false);
 				RevueM revueT = this.tableRev.getSelectionModel().getSelectedItem();
 				this.edt_titre.setText(revueT.getTitre());
 				this.edt_desc.setText(revueT.getDescription());
@@ -279,7 +282,7 @@ public class RevueControleur {
 			this.lbl_empty.setVisible(true);
 		} else {
 			RevueM r = this.tableRev.getSelectionModel().getSelectedItem();
-			if (dao.getAbonnement().RevExist(r.getId_revue())) {
+			if (dao.getAbonnement().revExist(r.getId_revue())) {
 				this.lbl_empty.setText("Impossible de supprimer cette Revue");
 				this.lbl_empty.setVisible(true);
 			} else {
@@ -294,13 +297,12 @@ public class RevueControleur {
 	void Rechercher(ActionEvent event) {
 		ArrayList<RevueM> liste = new ArrayList<>();
 		if (this.edt_RecTarif.getText().isEmpty() && this.edt_RecTitre.getText().isEmpty()) {
-			this.lbl_empty.setText("Champ recherche vide");
-			this.lbl_empty.setVisible(true);
+			clear();
 		} else {
 			String titre = null;
 			Double tarif = null;
 			if (!this.edt_RecTitre.getText().isEmpty())
-				titre = this.edt_RecTitre.getText().trim();
+				titre = this.edt_RecTitre.getText().trim().toLowerCase();
 			if (!this.edt_RecTarif.getText().isEmpty())
 				tarif = Double.valueOf(this.edt_RecTarif.getText().trim());
 			for (RevueM a : rev.tout())
@@ -309,7 +311,7 @@ public class RevueControleur {
 
 					if (titre != null) {
 
-						if (a.getTitre().contains(titre) && a.getTarif_numero() == tarif) {
+						if (a.getTitre().toLowerCase().contains(titre) && a.getTarif_numero() == tarif) {
 							liste.add(a);
 						}
 
@@ -317,7 +319,7 @@ public class RevueControleur {
 						liste.add(a);
 
 					}
-				} else if (a.getTitre().contains(titre))
+				} else if (a.getTitre().toLowerCase().contains(titre))
 					liste.add(a);
 
 			this.tableRev.setItems(FXCollections.observableArrayList(liste));

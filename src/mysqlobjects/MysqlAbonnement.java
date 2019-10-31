@@ -135,12 +135,33 @@ public class MysqlAbonnement implements AbonnementDAO {
 
 	}
 
-	public boolean RevExist(int idRev) {
+	public boolean revExist(int idRev) {
 		boolean resultat;
 		try {
 			Connection laConnexion = Connexion.getInstance().getMaConnexion();
 			PreparedStatement requete = laConnexion.prepareStatement("SELECT * FROM Abonnement WHERE id_revue=?");
 			requete.setInt(1, idRev);
+			ResultSet res = requete.executeQuery();
+			
+			if (res.next())
+				resultat= true;
+			else
+				resultat= false;
+			if (res != null)
+				res.close();
+		} catch (SQLException sqle) {
+			resultat= false;
+		}
+		return resultat;
+
+	}
+	
+	public boolean cliExist(int id) {
+		boolean resultat;
+		try {
+			Connection laConnexion = Connexion.getInstance().getMaConnexion();
+			PreparedStatement requete = laConnexion.prepareStatement("SELECT * FROM Abonnement WHERE id_client=?");
+			requete.setInt(1, id);
 			ResultSet res = requete.executeQuery();
 			
 			if (res.next())
