@@ -94,7 +94,7 @@ public class ClientControleur {
 
 	@FXML
 	private TableColumn<ClientM, String> nomColumn;
-	
+
 	@FXML
 	private TableColumn<ClientM, String> paysColumn;
 
@@ -240,11 +240,12 @@ public class ClientControleur {
 			this.edtNom.setText(c.getNom());
 			this.edtNoRue.setText(c.getNo_rue());
 			this.edtPays.setText(c.getPays());
-			this.edtPrenom.setText(c.getPrenom());	
+			this.edtPrenom.setText(c.getPrenom());
 			this.edtVille.setText(c.getVille());
 			this.edtVoie.setText(c.getVoie());
 		} else {
 			if (!SomethingEmpty()) {
+				this.lbl_empty.setVisible(false);
 				if (ChampCorrecte()) {
 					ClientM c = this.tableCli.getSelectionModel().getSelectedItem();
 					c.setNo_rue(this.edtNoRue.getText().trim());
@@ -279,7 +280,6 @@ public class ClientControleur {
 				cli.supprimer(c);
 				clear();
 			}
-
 		}
 	}
 
@@ -331,28 +331,9 @@ public class ClientControleur {
 	}
 
 	boolean SomethingEmpty() {
-		boolean rep = false;
-		if (this.edtCodeP.getText() == null || this.edtCodeP.getText().trim() == "")
-			rep = true;
-		if (this.edtNom.getText() == null || this.edtNom.getText().trim() == "")
-			rep = true;
-		if (this.edtVille.getText() == null || this.edtVille.getText().trim() == "")
-			rep = true;
-		if (this.edtPays.getText() == null || this.edtPays.getText().trim() == "")
-			rep = true;
-		if (this.edtNoRue.getText() == null || this.edtNoRue.getText().trim() == "")
-			rep = true;
-		if (this.edtPrenom.getText() == null || this.edtPrenom.getText().trim() == "")
-			rep = true;
-		if (this.edtVoie.getText() == null || this.edtVoie.getText().trim() == "")
-			rep = true;
-
-		return rep; /*
-					 * this.edtCodeP.getText().isEmpty() || this.edtNom.getText().isEmpty() ||
-					 * this.edtNoRue.getText().isEmpty() || this.edtPays.getText().isEmpty() ||
-					 * this.edtVille.getText().isEmpty() || this.edtPrenom.getText().isEmpty() ||
-					 * this.edtVoie.getText().isEmpty();
-					 */
+		return this.edtCodeP.getText().isEmpty() || this.edtNom.getText().isEmpty() || this.edtNoRue.getText().isEmpty()
+				|| this.edtPays.getText().isEmpty() || this.edtVille.getText().isEmpty()
+				|| this.edtPrenom.getText().isEmpty() || this.edtVoie.getText().isEmpty();
 	}
 
 	boolean textonly(String texte) {
