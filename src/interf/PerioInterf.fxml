@@ -14,8 +14,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="400.0" styleClass="background" stylesheets="@Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="controleur.PerioControleur">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="400.0" styleClass="background" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.PerioControleur">
    <children>
       <Pane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="400.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -45,7 +44,7 @@
                   </Label>
                </children>
             </GridPane>
-            <Label fx:id="lbl_empty" alignment="CENTER" layoutX="150.0" layoutY="5.0" text="des champs sont vides" visible="false" />
+            <Label fx:id="lbl_empty" alignment="CENTER" layoutY="5.0" text="des champs sont vides" visible="false" />
          </children>
       </Pane>
       <Pane layoutX="10.0" layoutY="310.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0">

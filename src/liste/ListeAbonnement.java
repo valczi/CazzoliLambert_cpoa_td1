@@ -55,7 +55,6 @@ public class ListeAbonnement implements AbonnementDAO {
 				i++;
 		}
 		if (!trouve) {
-			System.out.println("Aucun AbonnementM avec cet id");
 			AbonnementM = null;
 		}
 		return AbonnementM;

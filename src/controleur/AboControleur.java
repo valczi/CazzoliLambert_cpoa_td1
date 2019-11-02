@@ -182,6 +182,7 @@ public class AboControleur {
 			this.lbl_alerte_DateF.setVisible(true);
 		} else
 			this.lbl_alerte_DateF.setVisible(false);
+		
 		if (deb != null && fin != null)
 			if (deb.isAfter(fin)) {
 				this.lbl_empty.setText("Date debut superieur a date fin");
