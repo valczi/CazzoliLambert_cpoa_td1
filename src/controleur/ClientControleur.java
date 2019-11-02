@@ -94,6 +94,9 @@ public class ClientControleur {
 
 	@FXML
 	private TableColumn<ClientM, String> nomColumn;
+	
+	@FXML
+	private TableColumn<ClientM, String> paysColumn;
 
 	@FXML
 	private TableColumn<ClientM, String> PrenomColumn;
@@ -126,6 +129,7 @@ public class ClientControleur {
 		this.rueColumn.setCellValueFactory(new PropertyValueFactory<>("no_rue"));
 		this.VilleColumn.setCellValueFactory(new PropertyValueFactory<>("ville"));
 		this.VoieColumn.setCellValueFactory(new PropertyValueFactory<>("voie"));
+		this.paysColumn.setCellValueFactory(new PropertyValueFactory<>("pays"));
 		this.tableCli.setItems(FXCollections.observableArrayList(cli.tout()));
 	}
 
@@ -199,7 +203,7 @@ public class ClientControleur {
 			if (ChampCorrecte()) {
 				this.cli.ajout(new ClientM(this.edtNom.getText().trim(), this.edtPrenom.getText().trim(),
 						this.edtNoRue.getText(), this.edtVoie.getText(), this.edtCodeP.getText(),
-						this.edtPays.getText(), this.edtVille.getText()));
+						this.edtVille.getText(), this.edtPays.getText()));
 				clear();
 			}
 		} else {
@@ -236,7 +240,7 @@ public class ClientControleur {
 			this.edtNom.setText(c.getNom());
 			this.edtNoRue.setText(c.getNo_rue());
 			this.edtPays.setText(c.getPays());
-			this.edtPrenom.setText(c.getPrenom());
+			this.edtPrenom.setText(c.getPrenom());	
 			this.edtVille.setText(c.getVille());
 			this.edtVoie.setText(c.getVoie());
 		} else {
@@ -327,25 +331,28 @@ public class ClientControleur {
 	}
 
 	boolean SomethingEmpty() {
-		boolean rep=false;
-		if(this.edtCodeP.getText()==null || this.edtCodeP.getText().trim()=="")
-			rep=true;
-		if(this.edtNom.getText()==null || this.edtNom.getText().trim()=="")
-			rep=true;
-		if(this.edtVille.getText()==null || this.edtVille.getText().trim()=="")
-			rep=true;
-		if(this.edtPays.getText()==null || this.edtPays.getText().trim()=="")
-			rep=true;
-		if(this.edtNoRue.getText()==null || this.edtNoRue.getText().trim()=="")
-			rep=true;
-		if(this.edtPrenom.getText()==null || this.edtPrenom.getText().trim()=="")
-			rep=true;
-		if(this.edtVoie.getText()==null || this.edtVoie.getText().trim()=="")
-			rep=true;
-		
-		return rep; /*this.edtCodeP.getText().isEmpty() || this.edtNom.getText().isEmpty() || this.edtNoRue.getText().isEmpty()
-				|| this.edtPays.getText().isEmpty() || this.edtVille.getText().isEmpty()
-				|| this.edtPrenom.getText().isEmpty() || this.edtVoie.getText().isEmpty();*/
+		boolean rep = false;
+		if (this.edtCodeP.getText() == null || this.edtCodeP.getText().trim() == "")
+			rep = true;
+		if (this.edtNom.getText() == null || this.edtNom.getText().trim() == "")
+			rep = true;
+		if (this.edtVille.getText() == null || this.edtVille.getText().trim() == "")
+			rep = true;
+		if (this.edtPays.getText() == null || this.edtPays.getText().trim() == "")
+			rep = true;
+		if (this.edtNoRue.getText() == null || this.edtNoRue.getText().trim() == "")
+			rep = true;
+		if (this.edtPrenom.getText() == null || this.edtPrenom.getText().trim() == "")
+			rep = true;
+		if (this.edtVoie.getText() == null || this.edtVoie.getText().trim() == "")
+			rep = true;
+
+		return rep; /*
+					 * this.edtCodeP.getText().isEmpty() || this.edtNom.getText().isEmpty() ||
+					 * this.edtNoRue.getText().isEmpty() || this.edtPays.getText().isEmpty() ||
+					 * this.edtVille.getText().isEmpty() || this.edtPrenom.getText().isEmpty() ||
+					 * this.edtVoie.getText().isEmpty();
+					 */
 	}
 
 	boolean textonly(String texte) {

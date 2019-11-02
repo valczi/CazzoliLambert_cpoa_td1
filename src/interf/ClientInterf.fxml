@@ -56,25 +56,25 @@
                         <Insets right="30.0" />
                      </GridPane.margin>
                   </Label>
-                  <TextField fx:id="edtPays" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="130.0" GridPane.columnIndex="1" />
+                  <TextField fx:id="edtPays" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="130.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
+                  <TextField fx:id="edtVille" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="130.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <TextField fx:id="edtVoie" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="130.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                   <TextField fx:id="edtNom" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="130.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets></TextField>
-                  <TextField fx:id="edtVoie" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="130.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField fx:id="edtVille" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="130.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label text="Numéro rue :" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets right="30.0" />
                      </GridPane.margin>
                   </Label>
-                  <TextField fx:id="edtPrenom" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="130.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <TextField fx:id="edtCodeP" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="25.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                  <TextField fx:id="edtPrenom" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="130.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                  <TextField fx:id="edtCodeP" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="25.0" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets right="10.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="edtNoRue" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="25.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                  <TextField fx:id="edtNoRue" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="25.0" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets right="10.0" />
                      </GridPane.margin>
@@ -153,12 +153,13 @@
             </GridPane>
             <TableView fx:id="tableCli" layoutY="64.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="330.0" prefWidth="500.0">
                <columns>
-                  <TableColumn fx:id="nomColumn" prefWidth="100.0" text="Nom" />
-                  <TableColumn fx:id="PrenomColumn" prefWidth="100.0" text="Prenom" />
+                  <TableColumn fx:id="nomColumn" prefWidth="75.0" text="Nom" />
+                  <TableColumn fx:id="PrenomColumn" prefWidth="75.0" text="Prenom" />
+                  <TableColumn fx:id="paysColumn" prefWidth="70.0" text="Pays" />
                   <TableColumn fx:id="VilleColumn" prefWidth="75.0" text="Ville" />
-                  <TableColumn fx:id="VoieColumn" prefWidth="85.0" text="Voie" />
+                  <TableColumn fx:id="VoieColumn" prefWidth="65.0" text="Voie" />
                   <TableColumn fx:id="CodeColumn" prefWidth="90.0" text="Code Postal" />
-                  <TableColumn fx:id="rueColumn" prefWidth="50.0" text="rue" />
+                  <TableColumn fx:id="rueColumn" prefWidth="50.0" text="n°rue" />
                </columns>
             </TableView>
          </children>
